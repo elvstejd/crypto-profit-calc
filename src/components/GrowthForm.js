@@ -1,7 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-import { BiDollar } from 'react-icons/bi';
+import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import '../styles/GrowthForm.css';
+
+function isProfit(growthPercentage) {
+    return growthPercentage >= 0;
+}
+
+function alwaysPositive(percentage) {
+    if (percentage < 0) {
+        return percentage*-1;
+    }
+
+    return percentage;
+}
 
 
 const GrowthForm = (props) => {
@@ -23,7 +35,12 @@ const GrowthForm = (props) => {
                 <button id="plus-btn" onClick={props.handleAddPrice}>+</button>
                 <button id="plus-btn" onClick={props.handleMinusPrice}>-</button>
             </div>
-            <p>{t('percentage_label')}: {props.percentage}%</p>
+            <div className="growth-container">
+                <span 
+                className="caret"
+                id={isProfit(props.percentage) ? "profit" : "loss"}
+                >{isProfit(props.percentage) ? <BiCaretUp /> : <BiCaretDown/>}</span>{alwaysPositive(props.percentage)}%
+            </div>
         </div>
     );
 }

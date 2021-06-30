@@ -26,3 +26,25 @@ button {
 #target-price-area #minus-btn {
     flex-grow: 1;
 }
+
+.growth-container {
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    font-size: 3rem;
+}
+
+.caret {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.caret#loss {
+    color: var(--main-red);
+}
+
+.caret#profit {
+    color: var(--main-green);
+}
+
