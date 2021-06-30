@@ -10,7 +10,7 @@ import {
     parseValue,
     round
  } from '../util/helperFunctions';
-import './App.css';
+import '../styles/App.css';
     
 const App = () => {
     const [selectedCoin, setSelectedCoin] = useState(null); 
