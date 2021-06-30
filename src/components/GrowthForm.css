@@ -1,0 +1,21 @@
+#target-price-area {
+    display: flex;
+    flex-direction: row;
+}
+
+#target-price-area input {
+    flex-grow: 3;
+}
+
+#target-price-area button {
+    margin-left: 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#target-price-area #plus-btn {
+    flex-grow: 1;
+}
+
+#target-price-area #minus-btn {
+    flex-grow: 1;
+}

@@ -1,0 +1,8 @@
+{
+    "invested_label": "Invested",
+    "coin_label": "Coin",
+    "buying_price_label": "Buying Price",
+    "coin_amount_label": "Amount",
+    "percentage_label": "Percentage",
+    "target_price_label": "Selling price"
+}
