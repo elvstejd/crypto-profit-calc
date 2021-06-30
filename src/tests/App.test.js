@@ -1,4 +1,4 @@
-import { parseValues } from './App';
+import { parseValues } from '../components/App';
 
 test('parse values should be 0 when called with NaN', () => {
     const value = parseValues(NaN);
