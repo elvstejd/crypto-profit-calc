@@ -3,33 +3,14 @@ import MainForm from './MainForm';
 import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
 import ProfitDisplay from './ProfitDisplay';
+import { 
+    calculateProfit, 
+    calculateAmount, 
+    calculatePercentage, 
+    parseValue,
+    round
+ } from '../util/helperFunctions';
 import './App.css';
-
-function calculateProfit(invested, amount, targetPrice) {
-    const futureHoldings = amount * targetPrice;
-    const profit = futureHoldings - invested; 
-    return parseValue(profit);
-}
-
-function calculateAmount(invested, buyingPrice) {
-    const amount = invested/buyingPrice; 
-    return parseValue(amount);
-}
-
-function calculatePercentage(profit, invested) {
-    return (profit/invested)*100;
-}
-
-function parseValue(v) {
-    const value = parseFloat(v);
-    if (isNaN(value)) return 0;
-    if (!isFinite(value)) return 0;
-    return value;
-}
-
-const round = (number) => {
-    return number.toFixed(2);
-}
     
 const App = () => {
     const [selectedCoin, setSelectedCoin] = useState(null); 
