@@ -12,6 +12,13 @@
     font-family: 'DM Sans', sans-serif;
 }
 
+button {
+    border-radius: 7px;
+    background-color: var(--bg-color);
+    color: white;
+    border: none;
+}
+
 #target-price-area #plus-btn {
     flex-grow: 1;
 }

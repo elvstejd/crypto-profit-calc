@@ -9,7 +9,8 @@ import {
     calculatePercentage, 
     parseValue,
     round
- } from '../util/helperFunctions';
+} from '../util/helperFunctions';
+import { useTranslation } from 'react-i18next';
 import '../styles/App.css';
     
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     const [invested, setInvested] = useState(0);
     const [profit, setProfit] = useState(0);
     const [percentage, setPercentage] = useState(0);
+    const { t } = useTranslation();
 
     useEffect(() => {
         setProfit(round(calculateProfit(invested, amount, targetPrice)));
@@ -70,6 +72,7 @@ const App = () => {
             <header>
                 <h1>ProfitCalc</h1>
             </header>
+            <div className="tagline">{t('tagline')}</div>
             <main>
                 <MainForm
                     handleCoinChange={handleCoinChange}
@@ -87,7 +90,13 @@ const App = () => {
                     handleMinusPrice={handleMinusPrice}
                 />
             </main>
-            <LanguageSelector />
+            <footer>
+                <div className="me">
+                    <p>Made by ME</p>
+                    <p>Feedback</p>
+                </div>
+                <LanguageSelector />
+            </footer>
         </div>
     );
 }

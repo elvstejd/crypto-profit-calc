@@ -1,0 +1,17 @@
+#earnings-container {
+    display: flex;
+    line-height: none;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.earnings {
+    line-height: none;
+    font-size: 2rem;
+    color: var(--main-green);
+}
+
+#loss {
+    color: var(--main-red);
+}
