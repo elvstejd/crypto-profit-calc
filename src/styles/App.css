@@ -54,7 +54,8 @@ main {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 20rem 40rem;
-    grid-gap: 1rem 1rem;
+    grid-template-rows: 50% 50%;
+    grid-gap: 1rem;
 }
 
 footer {

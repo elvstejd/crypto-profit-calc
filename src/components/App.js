@@ -81,6 +81,7 @@ const App = () => {
                     selectedCoin={selectedCoin}
                     amount={amount}
                 />
+                
                 <ProfitDisplay profit={profit} />
                 <GrowthForm 
                     handleTargetPriceChange={handleTargetPriceChange}
@@ -89,6 +90,7 @@ const App = () => {
                     handleAddPrice={handleAddPrice}
                     handleMinusPrice={handleMinusPrice}
                 />
+                
             </main>
             <footer>
                 <div className="me">
