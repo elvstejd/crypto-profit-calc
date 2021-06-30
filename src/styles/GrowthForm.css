@@ -3,7 +3,7 @@
     flex-direction: row;
 }
 
-#target-price-area input {
+#target-price-area .input-wrapper {
     flex-grow: 3;
 }
 

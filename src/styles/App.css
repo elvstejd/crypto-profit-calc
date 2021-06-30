@@ -17,15 +17,40 @@ body {
     font-family: 'DM Sans', sans-serif;
 }
 
-input {
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: var(--bg-color);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+}
+
+.input-wrapper span {
+   display: flex;
+   align-items: center;
+}
+
+input {
+    background-color: transparent;
     border: none;
     color: white;
     outline: none;
     font-family: 'DM Sans', sans-serif;
     font-size: medium;
-    padding: 0.6rem 1rem;
-    border-radius: 6px;
+    width: 100%;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 label {

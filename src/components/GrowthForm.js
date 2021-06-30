@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BiDollar } from 'react-icons/bi';
 import '../styles/GrowthForm.css';
 
 
@@ -15,7 +16,10 @@ const GrowthForm = (props) => {
         <div className="container">
             <label htmlFor="target-price">{t('target_price_label')}</label>
             <div id="target-price-area">
-                <input id="target-price-input" ref={targetPriceRef} name="target-price" type="number" onChange={props.handleTargetPriceChange}/>
+                <div className="input-wrapper" >
+                    <input id="target-price-input" ref={targetPriceRef} name="target-price" type="number" onChange={props.handleTargetPriceChange}/>
+                    <span><BiDollar /></span>
+                </div>
                 <button id="plus-btn" onClick={props.handleAddPrice}>+</button>
                 <button id="plus-btn" onClick={props.handleMinusPrice}>-</button>
             </div>
