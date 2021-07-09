@@ -12,6 +12,7 @@ import {
 } from '../util/helperFunctions';
 import { useTranslation } from 'react-i18next';
 import '../styles/App.css';
+import logo from '../assets/images/logo.png';
     
 const App = () => {
     const [selectedCoin, setSelectedCoin] = useState(null); 
@@ -70,7 +71,7 @@ const App = () => {
     return (
         <div>
             <header>
-                <h1>ProfitCalc</h1>
+                <img src={logo} alt="logo" />
             </header>
             <div className="tagline">{t('tagline')}</div>
             <main>
