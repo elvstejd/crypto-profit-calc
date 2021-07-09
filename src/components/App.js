@@ -73,7 +73,9 @@ const App = () => {
             <header>
                 <img src={logo} alt="logo" />
             </header>
-            <div className="tagline">{t('tagline')}</div>
+            <div className="tagline-container">
+                <p>{t('tagline')}</p>
+            </div>
             <main>
                 <MainForm
                     handleCoinChange={handleCoinChange}

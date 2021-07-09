@@ -66,11 +66,16 @@ header {
     padding-left: 2rem;
 }
 
-.tagline {
+.tagline-container {
     display: flex;
     justify-content: center;
-    font-size: 1.2rem;
+    padding: 1rem;
     margin-bottom: 0.5rem;
+}
+
+.tagline-container p {
+    font-size: 1.2rem;
+    text-align: center;
 }
 
 main {
@@ -89,6 +94,9 @@ main {
         grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 1rem;
         padding: 0 1rem;
+    }
+    .tagline-container p {
+        font-size: 1rem;
     }
     #main-form {
         grid-row: auto;
