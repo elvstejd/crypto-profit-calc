@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import i18next from 'i18next';
+import '../styles/LanguageSelector.css';
 
 const LanguageSelector = () => {
     const [selected, setSelected] = useState(localStorage.getItem('i18nextLng') || "en");

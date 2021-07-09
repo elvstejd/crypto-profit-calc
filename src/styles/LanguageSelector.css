@@ -1,0 +1,10 @@
+select {
+    background: none;
+    font-size: medium;
+    color: white;
+    padding: .3rem;
+}
+
+option {
+    background-color: var(--bg-color);
+}
