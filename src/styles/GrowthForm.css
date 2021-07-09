@@ -17,6 +17,11 @@ button {
     background-color: var(--bg-color);
     color: white;
     border: none;
+    cursor: pointer;
+}
+
+button:active {
+    transform: translateY(2px);
 }
 
 #target-price-area #plus-btn {
