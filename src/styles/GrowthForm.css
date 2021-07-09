@@ -3,6 +3,32 @@
     flex-direction: row;
 }
 
+@media only screen and (max-width: 600px) {
+    #target-price-area {
+        flex-direction: column;
+    }
+
+    .btns {
+       margin-top: 0.6rem;
+    }
+
+    .btns .btn {
+        padding: 0.6rem 1rem;
+    }
+
+    .btn.minus {
+        margin-left: 0.5rem;
+    }
+
+    .btn.plus {
+        margin-right: 0.5rem;
+    }
+
+    #target-price-area .btn {
+        margin-left: 0;
+    }
+}
+
 #target-price-area .input-wrapper {
     flex-grow: 3;
 }
@@ -24,11 +50,16 @@ button:active {
     transform: translateY(2px);
 }
 
-#target-price-area #plus-btn {
+.btns {
+    flex-grow: 2;
+    display: flex;
+}
+
+.btn.plus {
     flex-grow: 1;
 }
 
-#target-price-area #minus-btn {
+.btn.minus {
     flex-grow: 1;
 }
 

@@ -83,6 +83,24 @@ main {
     grid-gap: 1rem;
 }
 
+@media only screen and (max-width: 800px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-gap: 1rem;
+        padding: 0 1rem;
+    }
+    #main-form {
+        grid-row: auto;
+    }
+    #earnings-container {
+        grid-row: 1;
+    }
+    .currency-disclaimer-container {
+        padding: 0 1rem;
+    }
+}
+
 footer {
     width: 100%;
     display: flex;

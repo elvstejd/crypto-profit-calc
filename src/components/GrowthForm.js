@@ -32,8 +32,10 @@ const GrowthForm = (props) => {
                     <input id="target-price-input" ref={targetPriceRef} name="target-price" type="number" onChange={props.handleTargetPriceChange}/>
                     <span><BiDollar /></span>
                 </div>
-                <button id="plus-btn" onClick={props.handleAddPrice}>+</button>
-                <button id="plus-btn" onClick={props.handleMinusPrice}>-</button>
+                <div className="btns">
+                    <button className="btn plus" onClick={props.handleAddPrice}>+</button>
+                    <button className="btn minus" onClick={props.handleMinusPrice}>-</button>
+                </div>
             </div>
             <div className="growth-container">
                 <span 
