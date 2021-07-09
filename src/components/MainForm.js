@@ -1,8 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import Select from 'react-select';
+import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
+import '../styles/MainForm.css';
 
 const MainForm = (props) => {
     const { t } = useTranslation();
@@ -20,14 +21,7 @@ const MainForm = (props) => {
             <div>
                 <label htmlFor="coin">{t('coin_label')}</label>
                 <Select 
-                    className="react-select-container"
-                    classNamePrefix="rs"
-                    value={props.selectedCoin}
                     options={searchList}
-                    onChange={props.handleCoinChange}
-                    placeholder="Search here"
-                    openMenuOnClick={false}
-                    isClearable
                 />
             </div>
 

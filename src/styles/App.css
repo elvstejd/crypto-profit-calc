@@ -100,11 +100,6 @@ footer {
     justify-content: space-between;
 }
 
-.react-select-container * {
-    background-color: var(--bg-color) !important;
-    color: white;
-}
-
 #main-form > * {
     display: flex;
     flex-direction: column;
