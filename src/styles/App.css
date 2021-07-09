@@ -88,8 +88,6 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    bottom: 0;
     padding: 2rem;
 }
 
@@ -108,6 +106,17 @@ footer {
 
 #target-price-area {
     display: flex;
+}
+
+.currency-disclaimer-container {
+    max-width: 60rem;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+}
+
+.currency-disclaimer-container p {
+    color: rgb(202, 202, 202);
+    font-size: small;
 }
 
 .container {

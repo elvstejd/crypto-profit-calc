@@ -91,8 +91,10 @@ const App = () => {
                     handleAddPrice={handleAddPrice}
                     handleMinusPrice={handleMinusPrice}
                 />
-                
             </main>
+            <div className="currency-disclaimer-container">
+                <p>*All prices in US dollars.</p>
+            </div>
             <footer>
                 <div className="me">
                     <p>Made by ME</p>
