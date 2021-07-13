@@ -6,5 +6,6 @@
     "coin_amount_label": "Amount",
     "percentage_label": "Percentage",
     "target_price_label": "Selling price",
-    "profitloss_label": "Profit/Loss"
+    "profitloss_label": "Profit/Loss",
+    "no_results": "No coin found."
 }

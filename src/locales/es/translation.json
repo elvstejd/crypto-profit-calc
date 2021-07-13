@@ -6,5 +6,6 @@
     "coin_amount_label": "Cantidad",
     "percentage_label": "Porcentaje",
     "target_price_label": "Precio de venta",
-    "profitloss_label": "Ganancias/Pérdidas"
+    "profitloss_label": "Ganancias/Pérdidas",
+    "no_results": "No se encontró la moneda"
 }
