@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import MainForm from './MainForm';
 import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
@@ -23,6 +23,8 @@ const App = () => {
     const [profit, setProfit] = useState(0);
     const [percentage, setPercentage] = useState(0);
     const { t } = useTranslation();
+
+    const targetPriceInputRef = useRef()
 
     useEffect(() => {
         setProfit(round(calculateProfit(invested, amount, targetPrice)));
@@ -68,6 +70,14 @@ const App = () => {
         setTargetPrice(newValue);
     }
 
+    function updateTargetPrice(price) {
+        // if (targetPriceInputRef) {
+        //     // targetPriceInputRef.current.value = price;
+        // }
+        setBuyingPrice(price);
+        setTargetPrice(price);
+    }
+
     return (
         <div>
             <header>
@@ -82,6 +92,7 @@ const App = () => {
                     handleInvestedChange={handleInvestedChange}
                     handlePriceChange={handlePriceChange}
                     selectedCoin={selectedCoin}
+                    updateTargetPrice={updateTargetPrice}
                     amount={amount}
                 />
                 
@@ -92,6 +103,7 @@ const App = () => {
                     targetPrice={targetPrice}
                     handleAddPrice={handleAddPrice}
                     handleMinusPrice={handleMinusPrice}
+                    targetPriceInputRef={targetPriceInputRef}
                 />
             </main>
             <div className="currency-disclaimer-container">

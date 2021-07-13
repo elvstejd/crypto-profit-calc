@@ -1,12 +1,26 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
+import { useTranslation } from 'react-i18next';
 
-const Select = ({ options,  }) => {
+const Select = ({ options, setDisplayPrice  }) => {
     const [search, setSearch] = useState("");
     const [selectedCoin, setSelectedCoin] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const inputContainerRef = useRef();
     const inputRef = useRef();
+
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        if (selectedCoin) {
+            options.forEach(coin => {
+                if (coin.label === selectedCoin) {
+                    setDisplayPrice(coin.price);
+                }
+            });
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedCoin]);
     
     const handleSearchInputChange = (e) => {
         if (e.target.value) {
@@ -19,9 +33,9 @@ const Select = ({ options,  }) => {
     };
 
     const handleCoinSelect = (e) => {
-        setSelectedCoin(e.target.dataset.label);
         setSearch(e.target.dataset.label)
         setShowDropdown(false);
+        setSelectedCoin(e.target.dataset.label);
     };
 
     const handleClearSelected = (e) => {
@@ -32,9 +46,8 @@ const Select = ({ options,  }) => {
 
     const filteredCoins = () => {
         if (!search) return options;
-    
         return options.filter(coin => {
-            return coin.label.toLowerCase().indexOf(search.toLowerCase()) > -1;
+            return coin.searchedBy.toLowerCase().indexOf(search.toLowerCase()) > -1;
         });
     };
 
@@ -63,12 +76,13 @@ const Select = ({ options,  }) => {
                                 className="option" 
                                 data-label={option.label} 
                                 onClick={handleCoinSelect}
+                                key={option.label}
                             >
                             {option.label}
                             </div>
                 })}
                 {filteredCoins().length === 0 && (
-                    <div className="no-option">no results, sorry :(</div>
+                    <div className="no-option">{t("no_results")}</div>
                 )}
             </div>
         </div>

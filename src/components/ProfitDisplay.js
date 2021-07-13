@@ -22,7 +22,6 @@ const ProfitDisplay = (props) => {
                 <div 
                     className={"earnings " + getAppropiateSize(props.profit)}
                     id={props.profit >= 0 ? "profit" : "loss"}
-                    
                     >
                     {props.profit >= 0 ? ("$" + (props.profit*1).toLocaleString()) : ("-$" + (props.profit*-1).toLocaleString())}
                 </div>
