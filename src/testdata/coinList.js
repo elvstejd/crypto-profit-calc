@@ -1,52 +1,35 @@
 const searchList = [
     {
-        value: 'DOGE',
-        label: 'DOGE'
+        label: 'DOGE',
+        searchedBy: 'dogecoin doge',
+        price: 0.12
     },
     {
-        value: 'BTC',
-        label: 'BTC'
+        label: 'BTC',
+        searchedBy: 'bitcoin btc',
+        price: 30000
     },
     {
-        value: 'DOGE',
-        label: 'DOGE'
+        label: 'SHIB',
+        searchedBy: 'shiba token shib',
+        price: 0.12
     },
     {
-        value: 'BTC',
-        label: 'BTC'
+        label: 'USD',
+        searchedBy: 'dollar usd',
+        price: 0.12
     },
     {
-        value: 'DOGE',
-        label: 'DOGE'
+        label: 'DGB',
+        searchedBy: 'digicoin dgb',
+        price: 0.12
     },
     {
-        value: 'BTC',
-        label: 'BTC'
-    },
-    {
-        value: 'DOGE',
-        label: 'DOGE'
-    },
-    {
-        value: 'BTC',
-        label: 'BTC'
-    },
-    {
-        value: 'DOGE',
-        label: 'DOGE'
-    },
-    {
-        value: 'BTC',
-        label: 'BTC'
-    },
-    {
-        value: 'DOGE',
-        label: 'DOGE'
-    },
-    {
-        value: 'BTC',
-        label: 'BTC'
-    },
+        label: 'EUR',
+        searchedBy: 'euro eur',
+        price: 1.18
+    }
+
 ];
 
 export default searchList;
