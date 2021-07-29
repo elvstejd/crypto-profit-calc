@@ -2,7 +2,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 
-const Select = ({ options, setDisplayPrice  }) => {
+const Select = ({ setDisplayPrice }) => {
+    const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState("");
     const [selectedCoin, setSelectedCoin] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
@@ -12,16 +13,33 @@ const Select = ({ options, setDisplayPrice  }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
+        fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
+            setCoins(data)
+        })
+    }, []);
+
+    useEffect(() => {
         if (selectedCoin) {
-            options.forEach(coin => {
+            coins.forEach(coin => {
                 if (coin.label === selectedCoin) {
                     setDisplayPrice(coin.price);
                 }
             });
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedCoin]);
-    
+
+    useEffect(() => {
+        if (selectedCoin) {
+            coins.forEach(coin => {
+                if (coin.label === selectedCoin) {
+                    setDisplayPrice(coin.price);
+                }
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedCoin]);
+
     const handleSearchInputChange = (e) => {
         if (e.target.value) {
             setSearch(e.target.value);
@@ -45,8 +63,8 @@ const Select = ({ options, setDisplayPrice  }) => {
     }
 
     const filteredCoins = () => {
-        if (!search) return options;
-        return options.filter(coin => {
+        if (!search) return coins;
+        return coins.filter(coin => {
             return coin.searchedBy.toLowerCase().indexOf(search.toLowerCase()) > -1;
         });
     };
@@ -68,18 +86,18 @@ const Select = ({ options, setDisplayPrice  }) => {
                 ) : (
                     <span><BiSearch /></span>
                 )}
-               
+
             </div>
             <div className={"dropdown-content" + (showDropdown ? " show" : "")} style={getInputWidth()}>
-                {filteredCoins(search, options).map(option => {
-                    return <div 
-                                className="option" 
-                                data-label={option.label} 
-                                onClick={handleCoinSelect}
-                                key={option.label}
-                            >
-                            {option.label}
-                            </div>
+                {filteredCoins(search, coins).map(option => {
+                    return <div
+                        className="option"
+                        data-label={option.label}
+                        onClick={handleCoinSelect}
+                        key={option.label}
+                    >
+                        {option.label}
+                    </div>
                 })}
                 {filteredCoins().length === 0 && (
                     <div className="no-option">{t("no_results")}</div>
