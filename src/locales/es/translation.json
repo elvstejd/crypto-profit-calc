@@ -7,5 +7,8 @@
     "percentage_label": "Porcentaje",
     "target_price_label": "Precio de venta",
     "profitloss_label": "Ganancias/Pérdidas",
-    "no_results": "No se encontró la moneda"
+    "no_results": "No se encontró la moneda.",
+    "made_by": "Hecho por",
+    "currency_disclaimer": "Todos los precios en dólares estadounidenses.",
+    "feedback": "Sugerencias"
 }

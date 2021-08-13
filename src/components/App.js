@@ -111,12 +111,12 @@ const App = () => {
                 />
             </main>
             <div className="currency-disclaimer-container">
-                <p>*All prices in US dollars.</p>
+                <p>*{t("currency_disclaimer")}</p>
             </div>
             <footer>
                 <div className="me">
-                    <p>Made by ME</p>
-                    <p>Feedback</p>
+                    <p>{t("made_by")}</p>
+                    <p>{t("feedback")}</p>
                 </div>
                 <LanguageSelector />
             </footer>

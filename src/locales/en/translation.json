@@ -7,5 +7,8 @@
     "percentage_label": "Percentage",
     "target_price_label": "Selling price",
     "profitloss_label": "Profit/Loss",
-    "no_results": "No coin found."
+    "no_results": "No coin found.",
+    "made_by": "Made by",
+    "currency_disclaimer": "All prices in US dollars.",
+    "feedback": "Feedback"
 }
