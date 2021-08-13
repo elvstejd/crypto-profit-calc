@@ -7,12 +7,12 @@ import {
     calculateProfit, 
     calculateAmount, 
     calculatePercentage, 
-    parseValue,
-    round
+    parseValue
 } from '../util/helperFunctions';
 import { useTranslation } from 'react-i18next';
 import '../styles/App.css';
 import logo from '../assets/images/logo.png';
+import Big from 'big.js';
     
 const App = () => {
     const [selectedCoin, setSelectedCoin] = useState(null); 
@@ -20,26 +20,33 @@ const App = () => {
     const [buyingPrice, setBuyingPrice] = useState(0);
     const [targetPrice, setTargetPrice] = useState(0);
     const [invested, setInvested] = useState(0);
-    const [profit, setProfit] = useState(0);
+    const [profit, setProfit] = useState(new Big(0));
     const [percentage, setPercentage] = useState(0);
     const { t } = useTranslation();
 
-    const targetPriceInputRef = useRef()
+    const targetPriceInputRef = useRef();
 
+    const lastProfit = useRef(new Big(0));
+    
     useEffect(() => {
-        setProfit(round(calculateProfit(invested, amount, targetPrice)));
+        console.log(profit, lastProfit.current)
+        // if (profit === lastProfit.current) {
+            setProfit(calculateProfit(invested, amount, targetPrice));
+            lastProfit.current = profit
+            console.log('set profit')
+        // }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [invested, targetPrice, amount]);
+    
+    useEffect(() => {
         setAmount(calculateAmount(invested, buyingPrice));
-    }, [invested, buyingPrice, amount, targetPrice]);
+        console.log('set amount')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [invested, buyingPrice]);
 
     useEffect(() => {
-        setPercentage(parseValue(round(calculatePercentage(profit, invested))));
-    }, [profit, invested]);
-
-    useEffect(() => {
-        if (selectedCoin) {
-            
-        }
-    }, [selectedCoin]);
+        setPercentage(calculatePercentage(profit, invested));
+    }, [profit]);
 
     function handleCoinChange(selectedCoin) {
         setSelectedCoin(selectedCoin);
@@ -71,9 +78,6 @@ const App = () => {
     }
 
     function updateTargetPrice(price) {
-        // if (targetPriceInputRef) {
-        //     // targetPriceInputRef.current.value = price;
-        // }
         setBuyingPrice(price);
         setTargetPrice(price);
     }
@@ -121,5 +125,3 @@ const App = () => {
 }
 
 export default App;
-
-export { parseValue };
