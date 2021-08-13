@@ -18,13 +18,18 @@
 .option {
     padding: 0.5rem 0.5rem;
     margin-bottom: 0.2rem;
-    cursor: pointer;
+    
 }
 
 .no-option {
     padding: 0.5rem 0.5rem;
     margin-bottom: 0.2rem;
+    cursor: pointer;
     color: gray;
+}
+
+.no-option span {
+    color: white;
 }
 
 .close-btn {
@@ -40,5 +45,9 @@
 }
 
 .option:hover {
+    background-color: var(--fore-color);
+}
+
+.no-option:hover {
     background-color: var(--fore-color);
 }

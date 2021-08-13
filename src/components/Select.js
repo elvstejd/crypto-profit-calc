@@ -56,6 +56,11 @@ const Select = ({ setDisplayPrice }) => {
         setSelectedCoin(e.target.dataset.label);
     };
 
+    const handleNotFoundCoinSelect = (e) => {
+        setShowDropdown(false);
+        setSelectedCoin(search);
+    };
+
     const handleClearSelected = (e) => {
         setSearch("");
         setSelectedCoin(null);
@@ -100,7 +105,7 @@ const Select = ({ setDisplayPrice }) => {
                     </div>
                 })}
                 {filteredCoins().length === 0 && (
-                    <div className="no-option">{t("no_results")}</div>
+                    <div onClick={handleNotFoundCoinSelect} className="no-option">{t("no_results")} <span>{search}</span></div>
                 )}
             </div>
         </div>
