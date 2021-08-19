@@ -4,15 +4,18 @@
     justify-content: center;
     height: fit-content;
     margin: auto 0;
+    overflow: hidden;
 }
 
 .earnings {
     line-height: none;
+    max-width: inherit;
     font-size: 5rem;
     color: var(--main-green);
+    overflow-x: auto;
 }
 
-.earnings.lg {
+/* .earnings.lg {
     font-size: 5rem;
 }
 
@@ -22,7 +25,7 @@
 
 .earnings.sm {
     font-size: 3rem;
-}
+} */
 
 #loss {
     color: var(--main-red);

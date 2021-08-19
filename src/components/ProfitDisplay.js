@@ -20,7 +20,8 @@ const ProfitDisplay = (props) => {
             <label>{t('profitloss_label')}</label>
             <div id="earnings-container">
                 <div 
-                    className={"earnings " + getAppropiateSize(props.profit)}
+                    className={"earnings"}
+                    // className={"earnings " + getAppropiateSize(props.profit)}
                     id={props.profit >= 0 ? "profit" : "loss"}
                     >
                     {props.profit >= 0 ? ("$" + (props.profit*1).toLocaleString()) : ("-$" + (props.profit*-1).toLocaleString())}
