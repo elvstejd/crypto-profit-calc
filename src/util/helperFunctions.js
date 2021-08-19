@@ -4,7 +4,7 @@ export function calculateAmount(invested, buyingPrice) {
     // validate input
     if (
         invested == 0 ||
-        buyingPrice === 0 ||
+        buyingPrice == 0 ||
         !isValid(invested) ||
         !isValid(buyingPrice)
     ) return 0;
