@@ -3,7 +3,7 @@ import Big from 'big.js';
 export function calculateAmount(invested, buyingPrice) {
     // validate input
     if (
-        invested === 0 ||
+        invested == 0 ||
         buyingPrice === 0 ||
         !isValid(invested) ||
         !isValid(buyingPrice)
@@ -16,7 +16,7 @@ export function calculateAmount(invested, buyingPrice) {
 
 export function calculateProfit(invested, amount, targetPrice) {
     if (
-        invested === 0 ||
+        invested == 0 ||
         !isValid(invested) ||
         !isValid(amount) ||
         !isValid(targetPrice)
@@ -37,7 +37,7 @@ export function calculateProfit(invested, amount, targetPrice) {
 
 export function calculatePercentage(profit, invested) {
     if (
-        invested === 0 ||
+        invested == 0 ||
         !isValid(invested) ||
         !isValid(profit)
     ) return 0;
