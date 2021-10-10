@@ -25,8 +25,6 @@ const App = () => {
     const [percentage, setPercentage] = useState(0);
     const { t } = useTranslation();
 
-    const targetPriceInputRef = useRef();
-
     const lastProfit = useRef(new Big(0));
 
     useEffect(() => {
@@ -53,21 +51,6 @@ const App = () => {
         setSelectedCoin(selectedCoin);
     }
 
-    function handleTargetPriceChange(e) {
-        let targetPrice = parseValue(e.target.value);
-        setTargetPrice(targetPrice);
-    }
-
-    function handleAddPrice() {
-        const newValue = targetPrice + 1;
-        setTargetPrice(newValue);
-    }
-
-    function handleMinusPrice() {
-        const newValue = targetPrice - 1;
-        setTargetPrice(newValue);
-    }
-
     return (
         <DataProvider>
             <div>
@@ -79,16 +62,8 @@ const App = () => {
                 </div>
                 <main>
                     <MainForm />
-
                     <ProfitDisplay profit={profit} />
-                    <GrowthForm
-                        handleTargetPriceChange={handleTargetPriceChange}
-                        percentage={percentage}
-                        targetPrice={targetPrice}
-                        handleAddPrice={handleAddPrice}
-                        handleMinusPrice={handleMinusPrice}
-                        targetPriceInputRef={targetPriceInputRef}
-                    />
+                    <GrowthForm />
                 </main>
                 <div className="currency-disclaimer-container">
                     <p>*{t("currency_disclaimer")}</p>
