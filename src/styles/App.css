@@ -23,7 +23,7 @@ body {
     justify-content: space-between;
     background-color: var(--bg-color);
     border-radius: 6px;
-    padding: 0.6rem 1rem;
+    padding: 0.5rem 1rem;
 }
 
 .input-wrapper span {
@@ -94,6 +94,9 @@ main {
         grid-template-rows: 1fr 1fr 1fr;
         grid-gap: 1rem;
         padding: 0 1rem;
+    }
+    .input-wrapper {
+        padding: 0.6rem 1rem;
     }
     .tagline-container p {
         font-size: 1rem;
