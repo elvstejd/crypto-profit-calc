@@ -13,9 +13,9 @@ const Select = ({ setDisplayPrice }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
-            setCoins(data)
-        })
+        // fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
+        //     setCoins(data)
+        // })
     }, []);
 
     useEffect(() => {
