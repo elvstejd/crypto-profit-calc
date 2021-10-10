@@ -47,10 +47,6 @@ const App = () => {
         setPercentage(calculatePercentage(profit, invested));
     }, [profit]);
 
-    function handleCoinChange(selectedCoin) {
-        setSelectedCoin(selectedCoin);
-    }
-
     return (
         <DataProvider>
             <div>
@@ -62,7 +58,7 @@ const App = () => {
                 </div>
                 <main>
                     <MainForm />
-                    <ProfitDisplay profit={profit} />
+                    <ProfitDisplay />
                     <GrowthForm />
                 </main>
                 <div className="currency-disclaimer-container">
