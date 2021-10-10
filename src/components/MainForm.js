@@ -4,8 +4,11 @@ import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
 import '../styles/MainForm.css';
+import { parseValue } from '../util/helperFunctions';
+import { useData } from '../contexts/dataContext';
 
-const MainForm = (props) => {
+const MainForm = () => {
+    const { amount, setInvested, setBuyingPrice, setTargetPrice } = useData();
     const { t } = useTranslation();
 
     const priceInputRef = useRef();
@@ -13,7 +16,18 @@ const MainForm = (props) => {
     const setDisplayPrice = (price) => {
         priceInputRef.current.value = price;
         // priceInputRef.current.onchange();
-        props.updateTargetPrice(price);
+        setBuyingPrice(price);
+        setTargetPrice(price);
+    }
+
+    function handleInvestedChange(e) {
+        let invested = parseValue(e.target.value);
+        setInvested(invested);
+    }
+
+    function handlePriceChange(e) {
+        let currentPrice = parseValue(e.target.value);
+        setBuyingPrice(currentPrice);
     }
 
     return (
@@ -21,14 +35,14 @@ const MainForm = (props) => {
             <div>
                 <label htmlFor="invested">{t('invested_label')}</label>
                 <div className="input-wrapper" >
-                    <input type="number" onChange={props.handleInvestedChange}/>
+                    <input type="number" onChange={handleInvestedChange} />
                     <span><BiDollar /></span>
                 </div>
             </div>
-                
+
             <div>
                 <label htmlFor="coin">{t('coin_label')}</label>
-                <Select 
+                <Select
                     options={searchList}
                     setDisplayPrice={setDisplayPrice}
                 />
@@ -37,7 +51,7 @@ const MainForm = (props) => {
             <div>
                 <label htmlFor="price">{t('buying_price_label')}</label>
                 <div className="input-wrapper" >
-                    <input ref={priceInputRef} type="number" name="price" onChange={props.handlePriceChange}/>
+                    <input ref={priceInputRef} type="number" name="price" onChange={handlePriceChange} />
                     <span><BiDollar /></span>
                 </div>
             </div>
@@ -45,7 +59,7 @@ const MainForm = (props) => {
             <div>
                 <label htmlFor="amount">{t('coin_amount_label')}</label>
                 <div className="input-wrapper" >
-                    <input name="amount" value={props.amount} readOnly/>
+                    <input name="amount" value={amount} readOnly />
                     <BiCoinStack />
                 </div>
             </div>
