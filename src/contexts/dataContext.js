@@ -38,6 +38,7 @@ function DataProvider({ children }) {
 
     useEffect(() => {
         setPercentage(calculatePercentage(profit, invested));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [profit]);
 
 
@@ -47,7 +48,8 @@ function DataProvider({ children }) {
         setTargetPrice,
         percentage,
         targetPrice,
-        profit
+        profit,
+        amount
     };
 
     return (
