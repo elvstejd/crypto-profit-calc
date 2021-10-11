@@ -15,7 +15,6 @@ const MainForm = () => {
 
     const setDisplayPrice = (price) => {
         priceInputRef.current.value = price;
-        // priceInputRef.current.onchange();
         setBuyingPrice(price);
         setTargetPrice(price);
     }

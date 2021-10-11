@@ -18,7 +18,7 @@ function alwaysPositive(percentage) {
 }
 
 
-const GrowthForm = (props) => {
+const GrowthForm = () => {
     const { setTargetPrice, percentage, targetPrice } = useData();
     const { t } = useTranslation();
     const targetPriceRef = useRef();
