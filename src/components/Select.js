@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
+import data from '../testdata/coinList';
 
 const Select = ({ setDisplayPrice }) => {
     const [coins, setCoins] = useState([]);
@@ -13,9 +14,9 @@ const Select = ({ setDisplayPrice }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
-            setCoins(data)
-        })
+        // fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
+        setCoins(data)
+        // })
     }, []);
 
     useEffect(() => {
