@@ -2,7 +2,8 @@ import { createContext, useContext, useState, useEffect } from "react";
 import {
     calculateProfit,
     calculateAmount,
-    calculatePercentage
+    calculatePercentage,
+    calculateGrossBalance
 } from '../util/helperFunctions';
 import Big from 'big.js';
 
@@ -13,7 +14,6 @@ export function useData() {
 }
 
 function DataProvider({ children }) {
-    // state
     const [amount, setAmount] = useState(0);
     const [buyingPrice, setBuyingPrice] = useState(0);
     const [targetPrice, setTargetPrice] = useState(0);
@@ -21,26 +21,18 @@ function DataProvider({ children }) {
     const [profit, setProfit] = useState(new Big(0));
     const [percentage, setPercentage] = useState(0);
 
-    // use effects
     useEffect(() => {
-        setProfit(calculateProfit(invested, amount, targetPrice));
-        console.log('set profit');
-
+        const amountResult = calculateAmount(invested, buyingPrice);
+        const profitResult = calculateProfit(calculateGrossBalance(amountResult, targetPrice), invested);
+        setProfit(profitResult);
+        setAmount(amountResult);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [invested, targetPrice, amount]);
-
-    useEffect(() => {
-        const amount = calculateAmount(invested, buyingPrice);
-        setAmount(amount);
-        console.log(amount);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [invested, buyingPrice]);
+    }, [targetPrice, invested, buyingPrice]);
 
     useEffect(() => {
         setPercentage(calculatePercentage(profit, invested));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [profit]);
-
 
     const value = {
         setInvested,
