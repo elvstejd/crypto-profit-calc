@@ -14,8 +14,8 @@ export function calculateAmount(invested, buyingPrice) {
     return amount;
 }
 
-export function calculateProfit(saldoBruto, invested) {
-    return saldoBruto - invested;
+export function calculateProfit(grossBalance, invested) {
+    return grossBalance - invested;
 }
 
 export function calculatePercentage(profit, invested) {
