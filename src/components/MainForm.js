@@ -4,7 +4,7 @@ import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
 import '../styles/MainForm.css';
-import { parseValue } from '../util/helperFunctions';
+import { parseValue } from '../utils/parseValue';
 import { useData } from '../contexts/dataContext';
 
 const MainForm = () => {

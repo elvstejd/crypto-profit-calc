@@ -1,10 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import {
-    calculateProfit,
-    calculateAmount,
-    calculatePercentage,
-    calculateGrossBalance
-} from '../util/helperFunctions';
+import { calculateProfit } from '../utils/calculateProfit';
+import { calculateCoinAmount as calculateAmount } from '../utils/calculateCoinAmount';
+import { calculateGrowthPercentage as calculatePercentage } from '../utils/calculateGrowthPercentage';
+import { calculateGrossBalance } from '../utils/calculateGrossBalance';
 import Big from 'big.js';
 
 const DataContext = createContext();

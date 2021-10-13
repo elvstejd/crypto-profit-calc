@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
 import '../styles/GrowthForm.css';
-import { parseValue } from '../util/helperFunctions';
+import { parseValue } from '../utils/parseValue';
 
 function isProfit(growthPercentage) {
     return growthPercentage >= 0;
