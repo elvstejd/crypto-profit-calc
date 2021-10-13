@@ -4,7 +4,6 @@ import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
 import '../styles/MainForm.css';
-import { parseValue } from '../utils/parseValue';
 import { useData } from '../contexts/dataContext';
 
 const MainForm = () => {
@@ -20,12 +19,17 @@ const MainForm = () => {
     }
 
     function handleInvestedChange(e) {
-        let invested = parseValue(e.target.value);
+        let invested = e.target.value;
+
+        // validate input 
+        if (!invested) invested = "0";
+
         setInvested(invested);
     }
 
     function handlePriceChange(e) {
-        let currentPrice = parseValue(e.target.value);
+        let currentPrice = e.target.value;
+        if (!currentPrice) currentPrice = "0";
         setBuyingPrice(currentPrice);
     }
 
