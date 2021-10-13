@@ -1,9 +1,9 @@
-import { 
+import {
     calculateProfit,
     calculateAmount,
     calculatePercentage,
     parseValue
-} from "../util/helperFunctions";
+} from "../utils/helperFunctions";
 
 
 // Test parseValue()
@@ -98,17 +98,17 @@ test('calculate profit should return 0 when given a undefined', () => {
 // Test calculatePercentage()
 
 test('calculate percentage should return up to 2 decimal places', () => {
-    
+
 });
 
 test('calculate percentage should not return decimal places if not needed', () => {
-    
+
 });
 
 // test('calculate percentage should return up to 2 decimal places', () => {
-    
+
 // });
 
 // test('calculate percentage should return up to 2 decimal places', () => {
-    
+
 // });
