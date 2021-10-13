@@ -1,15 +1,8 @@
-import Big from 'big.js';
-import { isValid } from './isValid';
+import Decimal from 'decimal.js';
 
 export function calculateGrowthPercentage(profit, invested) {
-    if (
-        invested == 0 ||
-        !isValid(invested) ||
-        !isValid(profit)
-    ) return 0;
+    // eslint-disable-next-line eqeqeq
+    if (invested == 0) return 0;
 
-    const bigProfit = new Big(profit);
-    const bigInvested = new Big(invested);
-
-    return bigProfit.div(bigInvested).times(100).toFixed(2);
+    return new Decimal(profit).dividedBy(invested).times(100).toString();
 }
