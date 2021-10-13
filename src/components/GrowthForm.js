@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
 import '../styles/GrowthForm.css';
-import { parseValue } from '../utils/parseValue';
 
 function isProfit(growthPercentage) {
     return growthPercentage >= 0;
@@ -24,11 +23,12 @@ const GrowthForm = () => {
     const targetPriceRef = useRef();
 
     useEffect(() => {
-        targetPriceRef.current.value = targetPrice || 0;
+        targetPriceRef.current.value = targetPrice || '';
     }, [targetPrice]);
 
     function handleTargetPriceChange(e) {
-        let targetPrice = parseValue(e.target.value);
+        let targetPrice = e.target.value;
+        if (!targetPrice) targetPrice = 0;
         setTargetPrice(targetPrice);
     }
 
@@ -47,7 +47,7 @@ const GrowthForm = () => {
             <label htmlFor="target-price">{t('target_price_label')}</label>
             <div id="target-price-area">
                 <div className="input-wrapper" >
-                    <input id="target-price-input" ref={targetPriceRef} name="target-price" type="number" onChange={handleTargetPriceChange} />
+                    <input id="target-price-input" ref={targetPriceRef} name="target-price" onChange={handleTargetPriceChange} />
                     <span><BiDollar /></span>
                 </div>
                 <div className="btns">

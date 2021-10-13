@@ -3,7 +3,6 @@ import { calculateProfit } from '../utils/calculateProfit';
 import { calculateCoinAmount as calculateAmount } from '../utils/calculateCoinAmount';
 import { calculateGrowthPercentage as calculatePercentage } from '../utils/calculateGrowthPercentage';
 import { calculateGrossBalance } from '../utils/calculateGrossBalance';
-import Big from 'big.js';
 
 const DataContext = createContext();
 
@@ -16,7 +15,7 @@ function DataProvider({ children }) {
     const [buyingPrice, setBuyingPrice] = useState(0);
     const [targetPrice, setTargetPrice] = useState(0);
     const [invested, setInvested] = useState(0);
-    const [profit, setProfit] = useState(new Big(0));
+    const [profit, setProfit] = useState("0");
     const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {

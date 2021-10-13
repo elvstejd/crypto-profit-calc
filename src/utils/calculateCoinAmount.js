@@ -1,15 +1,8 @@
-import Big from 'big.js';
-import { isValid } from './isValid';
+import Decimal from 'decimal.js';
 
 export function calculateCoinAmount(invested, buyingPrice) {
-    if (
-        invested == 0 ||
-        buyingPrice == 0 ||
-        !isValid(invested) ||
-        !isValid(buyingPrice)
-    ) return 0;
-    const bigInvested = new Big(invested);
-    const bigBuyingPrice = new Big(buyingPrice);
-    const amount = bigInvested.div(bigBuyingPrice);
-    return amount;
+    // eslint-disable-next-line eqeqeq
+    if (buyingPrice == 0) return 0;
+
+    return new Decimal(invested).dividedBy(buyingPrice).toString();
 }
