@@ -3,6 +3,7 @@ import { calculateProfit } from '../utils/calculateProfit';
 import { calculateCoinAmount as calculateAmount } from '../utils/calculateCoinAmount';
 import { calculateGrowthPercentage as calculatePercentage } from '../utils/calculateGrowthPercentage';
 import { calculateGrossBalance } from '../utils/calculateGrossBalance';
+import Decimal from "decimal.js";
 
 const DataContext = createContext();
 
@@ -35,9 +36,9 @@ function DataProvider({ children }) {
         setInvested,
         setBuyingPrice,
         setTargetPrice,
-        percentage,
         targetPrice,
-        profit,
+        percentage: new Decimal(buyingPrice).equals(targetPrice) ? "0" : percentage,
+        profit: new Decimal(buyingPrice).equals(targetPrice) ? "0" : profit,
         amount
     };
 
