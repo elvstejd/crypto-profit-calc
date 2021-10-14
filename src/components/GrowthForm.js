@@ -3,20 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
 import '../styles/GrowthForm.css';
+import { formatGrowthPercent } from '../utils/formatGrowthPercent';
 import { numberIsValid } from '../utils/numberIsValid';
 
 function isProfit(growthPercentage) {
     return growthPercentage >= 0;
 }
-
-function alwaysPositive(percentage) {
-    if (percentage < 0) {
-        return percentage * -1;
-    }
-
-    return percentage;
-}
-
 
 const GrowthForm = () => {
     const { setTargetPrice, percentage, targetPrice } = useData();
@@ -61,7 +53,8 @@ const GrowthForm = () => {
                 <span
                     className="caret"
                     id={isProfit(percentage) ? "profit" : "loss"}
-                >{isProfit(percentage) ? <BiCaretUp /> : <BiCaretDown />}</span>{alwaysPositive(percentage)}%
+                >{isProfit(percentage) ? <BiCaretUp /> : <BiCaretDown />}</span>
+                {formatGrowthPercent(percentage)}%
             </div>
         </div>
     );
