@@ -13,3 +13,13 @@
 body {
   font: var(--font-family-sans);
 }
+
+input {
+  background-color: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: medium;
+  width: 100%;
+}
