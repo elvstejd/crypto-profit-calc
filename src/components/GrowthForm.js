@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
 import '../styles/GrowthForm.css';
+import { numberIsValid } from '../utils/numberIsValid';
 
 function isProfit(growthPercentage) {
     return growthPercentage >= 0;
@@ -28,8 +29,9 @@ const GrowthForm = () => {
 
     function handleTargetPriceChange(e) {
         let targetPrice = e.target.value;
-        if (!targetPrice) targetPrice = 0;
-        setTargetPrice(targetPrice);
+        if (targetPrice.length > 12) e.preventDefault();
+        if (!targetPrice) setTargetPrice("0");
+        if (numberIsValid(targetPrice)) setTargetPrice(targetPrice);
     }
 
     function handleAddPrice() {
@@ -47,7 +49,7 @@ const GrowthForm = () => {
             <label htmlFor="target-price">{t('target_price_label')}</label>
             <div id="target-price-area">
                 <div className="input-wrapper" >
-                    <input id="target-price-input" ref={targetPriceRef} name="target-price" onChange={handleTargetPriceChange} />
+                    <input id="target-price-input" ref={targetPriceRef} name="target-price" maxLength="12" onChange={handleTargetPriceChange} />
                     <span><BiDollar /></span>
                 </div>
                 <div className="btns">

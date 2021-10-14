@@ -5,6 +5,7 @@ import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
 import '../styles/MainForm.css';
 import { useData } from '../contexts/dataContext';
+import { numberIsValid } from '../utils/numberIsValid';
 
 const MainForm = () => {
     const { amount, setInvested, setBuyingPrice, setTargetPrice } = useData();
@@ -20,17 +21,14 @@ const MainForm = () => {
 
     function handleInvestedChange(e) {
         let invested = e.target.value;
-
-        // validate input 
-        if (!invested) invested = "0";
-
-        setInvested(invested);
+        if (!invested) setInvested("0");
+        if (numberIsValid(invested)) setInvested(invested);
     }
 
     function handlePriceChange(e) {
         let currentPrice = e.target.value;
-        if (!currentPrice) currentPrice = "0";
-        setBuyingPrice(currentPrice);
+        if (!currentPrice) setBuyingPrice("0")
+        if (numberIsValid(currentPrice)) setBuyingPrice(currentPrice);
     }
 
     return (
@@ -38,7 +36,7 @@ const MainForm = () => {
             <div>
                 <label htmlFor="invested">{t('invested_label')}</label>
                 <div className="input-wrapper" >
-                    <input type="number" onChange={handleInvestedChange} />
+                    <input onChange={handleInvestedChange} maxLength="12" />
                     <span><BiDollar /></span>
                 </div>
             </div>
@@ -54,7 +52,7 @@ const MainForm = () => {
             <div>
                 <label htmlFor="price">{t('buying_price_label')}</label>
                 <div className="input-wrapper" >
-                    <input ref={priceInputRef} type="number" name="price" onChange={handlePriceChange} />
+                    <input ref={priceInputRef} name="price" maxLength="12" onChange={handlePriceChange} />
                     <span><BiDollar /></span>
                 </div>
             </div>
