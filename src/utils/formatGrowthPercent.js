@@ -14,7 +14,7 @@ const significantDigitFormatter = new Intl.NumberFormat('en-US', {
 });
 
 export function formatGrowthPercent(growth) {
-    const value = new Decimal(growth).abs()
+    const value = new Decimal(growth).abs();
     const isInteger = new Decimal(value).mod(1).toString() === "0";
     if (isInteger) {
         // value is integer
