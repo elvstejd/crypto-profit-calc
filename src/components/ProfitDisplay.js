@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useData } from '../contexts/dataContext';
 import '../styles/ProfitDisplay.css';
+import { formatProfitToUSD } from '../utils/formatProfitToUSD';
 
 
 const ProfitDisplay = () => {
@@ -16,7 +17,7 @@ const ProfitDisplay = () => {
                     className={"earnings"}
                     id={profit >= 0 ? "profit" : "loss"}
                 >
-                    {profit >= 0 ? ("$" + (profit * 1).toLocaleString()) : ("-$" + (profit * -1).toLocaleString())}
+                    {formatProfitToUSD(profit)}
                 </div>
             </div>
         </div>

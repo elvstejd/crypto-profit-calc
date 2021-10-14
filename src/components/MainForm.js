@@ -6,6 +6,7 @@ import searchList from '../testdata/coinList';
 import '../styles/MainForm.css';
 import { useData } from '../contexts/dataContext';
 import { numberIsValid } from '../utils/numberIsValid';
+import { formatCoinAmount } from '../utils/formatCoinAmount';
 
 const MainForm = () => {
     const { amount, setInvested, setBuyingPrice, setTargetPrice } = useData();
@@ -60,7 +61,7 @@ const MainForm = () => {
             <div>
                 <label htmlFor="amount">{t('coin_amount_label')}</label>
                 <div className="input-wrapper" >
-                    <input name="amount" value={amount} readOnly />
+                    <input name="amount" value={formatCoinAmount(amount)} readOnly />
                     <BiCoinStack />
                 </div>
             </div>
