@@ -6,13 +6,6 @@ import { InputContainer } from '../styles/shared/InputContainer';
 import styled from 'styled-components';
 
 
-const CloseButton = styled.span`
-    cursor: pointer;
-    color: var(--negative-500);
-    border-radius: 5px;
-    transition: .2s ease;
-`;
-
 const Dropdown = styled.div`
     margin-top: 0.2rem;
     position: absolute;
@@ -50,6 +43,28 @@ const NoResults = styled.div`
         background-color: var(--primary-300);
     }
 `;
+
+const PillContainer = styled.div`
+    display: flex;
+    border: 1px solid var(--accent-500);
+    background-color: var(--accent-alpha);
+    box-sizing: border-box;
+    gap: 0.2rem;
+    padding: .0631rem .4rem;
+    border-radius: var(--border-radius-xm);
+
+    span:nth-child(1) {
+        font-size: .79rem;
+    }
+`;
+
+const CloseButton = styled.span`
+    cursor: pointer;
+    color: var(--accent-300);
+    border-radius: 5px;
+    transition: .2s ease;
+`;
+
 
 const Select = ({ setDisplayPrice }) => {
     const [coins, setCoins] = useState([]);
@@ -105,15 +120,18 @@ const Select = ({ setDisplayPrice }) => {
         setSelectedCoin(e.target.dataset.label);
     };
 
-    const handleNotFoundCoinSelect = (e) => {
+    const handleNotFoundCoinSelect = () => {
         setShowDropdown(false);
         setSelectedCoin(search);
     };
 
-    const handleClearSelected = (e) => {
+    const handleClearSelected = () => {
         setSearch("");
         setSelectedCoin(null);
-        inputRef.current.focus();
+
+        setTimeout(() => {
+            if (inputRef.current) inputRef.current.focus();
+        }, 50);
     }
 
     const filteredCoins = () => {
@@ -133,14 +151,15 @@ const Select = ({ setDisplayPrice }) => {
     return (
         <div>
             <InputContainer ref={inputContainerRef}>
-                <input type="text" onChange={handleSearchInputChange} ref={inputRef} value={search} />
-
                 {selectedCoin ? (
-                    <CloseButton onClick={handleClearSelected}><BiX /></CloseButton>
+                    <PillContainer>
+                        <span>{search}</span>
+                        <CloseButton onClick={handleClearSelected}><BiX /></CloseButton>
+                    </PillContainer>
                 ) : (
-                    <span><BiSearch /></span>
+                    <input type="text" onChange={handleSearchInputChange} value={search} ref={inputRef} />
                 )}
-
+                <span><BiSearch /></span>
             </InputContainer>
             <Dropdown show={showDropdown} style={getInputWidth()}>
                 {filteredCoins(search, coins).map(option => {
