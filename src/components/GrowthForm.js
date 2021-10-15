@@ -2,42 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
-// import '../styles/GrowthForm.css';
 import { formatGrowthPercent } from '../utils/formatGrowthPercent';
 import { numberIsValid } from '../utils/numberIsValid';
 import styled from 'styled-components';
+import { Card } from '../styles/shared/Card';
+import { Label } from '../styles/shared/Label';
+import { InputContainer } from '../styles/shared/InputContainer';
 
-
-// this is shared
-const Card = styled.div`
-    background-color: var(--primary-300);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: var(--border-radius-md);
-    overflow: hidden;
-`;
-
-const Label = styled.label`
-    font-size: large;
-    margin-bottom: 0.5rem;
-`;
-
-const InputContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: var(--bg-color);
-    border-radius: 6px;
-    padding: 0.5rem 1rem;
-
-    span {
-        display: flex;
-        align-items: center;
-    }
-`;
-
-// end this is shared
 
 const TargetPriceFormContainer = styled.div`
     display: flex;
