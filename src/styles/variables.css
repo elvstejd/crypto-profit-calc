@@ -28,6 +28,7 @@
   --negative-500: #d56c6c;
 
   /* BORDER RADIUS */
+  --border-radius-xm: 3px;
   --border-radius-sm: 6px;
   --border-radius-md: 12px;
 
