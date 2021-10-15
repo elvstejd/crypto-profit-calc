@@ -17,7 +17,7 @@ const Dropdown = styled.div`
     margin-top: 0.2rem;
     position: absolute;
     z-index: 99;
-    background-color: var(--bg-color);
+    background-color: var(--primary-500);
     box-shadow: 1px 4px 7px -3px rgba(0,0,0,0.57);
     padding: 0.9rem 0.6rem; 
     border-radius: 6px;
