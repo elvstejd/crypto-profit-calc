@@ -2,6 +2,53 @@ import React, { useRef, useState, useEffect } from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
 import data from '../testdata/coinList';
+import { InputContainer } from '../styles/shared/InputContainer';
+import styled from 'styled-components';
+
+
+const CloseButton = styled.span`
+    cursor: pointer;
+    color: var(--negative-500);
+    border-radius: 5px;
+    transition: .2s ease;
+`;
+
+const Dropdown = styled.div`
+    margin-top: 0.2rem;
+    position: absolute;
+    z-index: 99;
+    background-color: var(--bg-color);
+    box-shadow: 1px 4px 7px -3px rgba(0,0,0,0.57);
+    padding: 0.9rem 0.6rem; 
+    border-radius: 6px;
+    overflow-y: scroll;
+    max-height: 20rem;
+    display: ${props => props.show ? 'block' : 'none'};
+`;
+
+const Option = styled.div`
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.2rem;
+
+    &:hover {
+        background-color: var(--primary-300);
+    }
+`;
+
+const NoResults = styled.div`
+    padding: 0.5rem 0.5rem;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+    color: gray;
+
+    span {
+        color: white;
+    }
+
+    &:hover {
+        background-color: var(--primary-300);
+    }
+`;
 
 const Select = ({ setDisplayPrice }) => {
     const [coins, setCoins] = useState([]);
@@ -83,32 +130,34 @@ const Select = ({ setDisplayPrice }) => {
     };
 
     return (
-        <div className="dropdown">
-            <div className="input-wrapper" ref={inputContainerRef}>
+        <div>
+            <InputContainer ref={inputContainerRef}>
                 <input type="text" onChange={handleSearchInputChange} ref={inputRef} value={search} />
 
                 {selectedCoin ? (
-                    <span className="close-btn" onClick={handleClearSelected}><BiX /></span>
+                    <CloseButton onClick={handleClearSelected}><BiX /></CloseButton>
                 ) : (
                     <span><BiSearch /></span>
                 )}
 
-            </div>
-            <div className={"dropdown-content" + (showDropdown ? " show" : "")} style={getInputWidth()}>
+            </InputContainer>
+            <Dropdown show={showDropdown} style={getInputWidth()}>
                 {filteredCoins(search, coins).map(option => {
-                    return <div
-                        className="option"
-                        data-label={option.label}
-                        onClick={handleCoinSelect}
-                        key={option.label}
-                    >
-                        {option.label}
-                    </div>
+                    return (
+                        <Option
+                            className="option"
+                            data-label={option.label}
+                            onClick={handleCoinSelect}
+                            key={option.label}
+                        >
+                            {option.label}
+                        </Option>
+                    );
                 })}
                 {filteredCoins().length === 0 && (
-                    <div onClick={handleNotFoundCoinSelect} className="no-option">{t("no_results")} <span>{search}</span></div>
+                    <NoResults onClick={handleNotFoundCoinSelect}>{t("no_results")} <span>{search}</span></NoResults>
                 )}
-            </div>
+            </Dropdown>
         </div>
     );
 }
