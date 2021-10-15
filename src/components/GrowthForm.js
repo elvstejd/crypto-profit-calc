@@ -36,7 +36,7 @@ const ButtonsContainer = styled.div`
 
 const Button = styled.button`
     border-radius: var(--border-radius-sm);
-    background-color: var(--accent-500);
+    background-color: var(--accent-600);
     color: var(--neutral-100);
     border: none;
     cursor: pointer;
@@ -44,7 +44,7 @@ const Button = styled.button`
     font-size: medium;
     flex-grow: 1;
     padding: 0.5rem;
-    box-shadow: 0 3px 0 var(--accent-600);
+    box-shadow: 0 3px 0 var(--accent-700);
     margin-bottom: 3px;
 
     &:active {
