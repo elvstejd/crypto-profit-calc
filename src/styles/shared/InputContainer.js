@@ -8,7 +8,7 @@ export const InputContainer = styled.div`
     border-radius: 6px;
     padding: 0.5rem 1rem;
     border: 1px solid var(--primary-200);
-    transition: .3s ease;
+    transition: border .3s ease;
     span {
         display: flex;
         align-items: center;
