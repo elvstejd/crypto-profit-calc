@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import "./i18nextConf";
 import './styles/variables.css';
-// import './styles/global.css';
+import './styles/global.css';
 
 const root = document.getElementById('root');
 
