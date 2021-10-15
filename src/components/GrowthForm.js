@@ -22,6 +22,10 @@ const TargetPriceFormContainer = styled.div`
 
 const TargetPriceInputContainer = styled(InputContainer)`
     flex-grow: 3;
+    &:focus-within {
+        border: 1px solid var(--accent-500);
+        outline: 3px solid var(--accent-alpha);
+    }
 `;
 
 const ButtonsContainer = styled.div`

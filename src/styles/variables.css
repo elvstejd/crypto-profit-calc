@@ -21,6 +21,7 @@
   --accent-500: #7b19c8ff;
   --accent-400: #a02cfaff;
   --accent-300: #b580deff;
+  --accent-alpha: rgba(128, 54, 185, 0.322);
 
   /*semantic*/
   --positive-500: #72d295;
