@@ -47,10 +47,10 @@ const MainForm = () => {
         <MainFormCard>
             <div>
                 <Label htmlFor="invested">{t('invested_label')}</Label>
-                <div className="input-wrapper" >
+                <InputContainer>
                     <input onChange={handleInvestedChange} maxLength="12" />
                     <span><BiDollar /></span>
-                </div>
+                </InputContainer>
             </div>
 
             <div>
