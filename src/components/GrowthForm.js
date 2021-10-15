@@ -32,16 +32,20 @@ const ButtonsContainer = styled.div`
 
 const Button = styled.button`
     border-radius: var(--border-radius-sm);
-    background-color: var(--primary-500);
+    background-color: var(--accent-500);
     color: var(--neutral-100);
     border: none;
     cursor: pointer;
     font-family: 'DM Sans', sans-serif;
+    font-size: medium;
     flex-grow: 1;
     padding: 0.5rem;
+    box-shadow: 0 3px 0 var(--accent-600);
+    margin-bottom: 3px;
 
     &:active {
-        transform: translateY(2px);
+        transform: translateY(3px);
+        box-shadow: none;
     }
 
     @media (min-width: 590px) {
