@@ -4,9 +4,68 @@ import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
 import ProfitDisplay from './ProfitDisplay';
 import { useTranslation } from 'react-i18next';
-import '../styles/App.css';
-import logo from '../assets/images/logo.png';
 import DataProvider from '../contexts/dataContext';
+import styled from 'styled-components';
+
+// const StyledMain = styled.main`
+//     max-width: 60rem;
+//     min-height: 30rem;
+//     margin: 0 auto;
+//     display: grid;
+//     grid-template-columns: 20rem 40rem;
+//     grid-template-rows: 50% 50%;
+//     grid-gap: 1rem;
+// `;
+
+const StyledMain = styled.main`
+    max-width: 36.8rem;
+    min-height: 30rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+
+    @media (min-width: 1024px) {
+        max-width: 60rem;
+        grid-template-columns: 33% 66%;
+        grid-template-rows: 50% 50%;
+    }
+`;
+
+const TaglineWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    margin-top: 2rem;
+
+    p {
+        font-size: 1rem;
+        text-align: center;
+
+        @media (min-width: 590px) {
+            font-size: 1.2rem;
+        }
+    }
+`;
+
+const StyledFooter = styled.footer`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 3rem;
+
+    @media (min-width: 590px) {
+        margin-top: 4rem;
+    }
+`;
+
+const SourceLink = styled.a`
+    color: var(--neutral-200);
+`;
+
 
 const App = () => {
     const { t } = useTranslation();
@@ -14,27 +73,18 @@ const App = () => {
     return (
         <DataProvider>
             <div>
-                <header>
-                    <img src={logo} alt="logo" />
-                </header>
-                <div className="tagline-container">
+                <TaglineWrapper>
                     <p>{t('tagline')}</p>
-                </div>
-                <main>
+                </TaglineWrapper>
+                <StyledMain>
                     <MainForm />
                     <ProfitDisplay />
                     <GrowthForm />
-                </main>
-                <div className="currency-disclaimer-container">
-                    <p>*{t("currency_disclaimer")}</p>
-                </div>
-                <footer>
-                    <div className="me">
-                        <p>{t("made_by")}</p>
-                        <p>{t("feedback")}</p>
-                    </div>
+                </StyledMain>
+                <StyledFooter>
+                    <SourceLink target="_blank" href="https://github.com/elvstejd/crypto-profit-calc">{t("source_code_label")}</SourceLink>
                     <LanguageSelector />
-                </footer>
+                </StyledFooter>
             </div>
         </DataProvider>
     );

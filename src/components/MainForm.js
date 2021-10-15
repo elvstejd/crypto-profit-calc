@@ -3,10 +3,30 @@ import { useTranslation } from 'react-i18next';
 import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
 import searchList from '../testdata/coinList';
-import '../styles/MainForm.css';
 import { useData } from '../contexts/dataContext';
 import { numberIsValid } from '../utils/numberIsValid';
 import { formatCoinAmount } from '../utils/formatCoinAmount';
+import { Card } from '../styles/shared/Card';
+import styled from 'styled-components';
+import { Label } from '../styles/shared/Label';
+import { InputContainer } from '../styles/shared/InputContainer';
+
+
+const MainFormCard = styled(Card)`
+    grid-row: span 2;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+`;
+
+const DisabledInputContainer = styled(InputContainer)`
+    background-color: var(--primary-400);
+`;
+
+const Spacer = styled.div`
+    margin-bottom: 0.5rem;
+`;
 
 const MainForm = () => {
     const { amount, setInvested, setBuyingPrice, setTargetPrice } = useData();
@@ -33,17 +53,21 @@ const MainForm = () => {
     }
 
     return (
-        <div className="container" id="main-form">
+        <MainFormCard>
             <div>
-                <label htmlFor="invested">{t('invested_label')}</label>
-                <div className="input-wrapper" >
+                <Spacer>
+                    <Label htmlFor="invested">{t('invested_label')}</Label>
+                </Spacer>
+                <InputContainer>
                     <input onChange={handleInvestedChange} maxLength="12" />
                     <span><BiDollar /></span>
-                </div>
+                </InputContainer>
             </div>
 
             <div>
-                <label htmlFor="coin">{t('coin_label')}</label>
+                <Spacer>
+                    <Label htmlFor="coin">{t('coin_label')}</Label>
+                </Spacer>
                 <Select
                     options={searchList}
                     setDisplayPrice={setDisplayPrice}
@@ -51,21 +75,25 @@ const MainForm = () => {
             </div>
 
             <div>
-                <label htmlFor="price">{t('buying_price_label')}</label>
-                <div className="input-wrapper" >
+                <Spacer>
+                    <Label htmlFor="price">{t('buying_price_label')}</Label>
+                </Spacer>
+                <InputContainer>
                     <input ref={priceInputRef} name="price" maxLength="12" onChange={handlePriceChange} />
                     <span><BiDollar /></span>
-                </div>
+                </InputContainer>
             </div>
 
             <div>
-                <label htmlFor="amount">{t('coin_amount_label')}</label>
-                <div className="input-wrapper" >
-                    <input name="amount" value={formatCoinAmount(amount)} readOnly />
+                <Spacer>
+                    <Label htmlFor="amount">{t('coin_amount_label')}</Label>
+                </Spacer>
+                <DisabledInputContainer>
+                    <input name="amount" value={formatCoinAmount(amount)} readOnly disabled />
                     <BiCoinStack />
-                </div>
+                </DisabledInputContainer>
             </div>
-        </div>
+        </MainFormCard>
     );
 };
 

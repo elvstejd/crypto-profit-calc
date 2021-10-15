@@ -2,34 +2,28 @@ const searchList = [
     {
         label: 'DOGE',
         searchedBy: 'dogecoin doge',
-        price: 0.12
+        price: 0.24
     },
     {
         label: 'BTC',
         searchedBy: 'bitcoin btc',
-        price: 30000
+        price: 40000
     },
     {
         label: 'SHIB',
         searchedBy: 'shiba token shib',
-        price: 0.12
+        price: 0.00023
     },
     {
-        label: 'USD',
+        label: 'USDT',
         searchedBy: 'dollar usd',
-        price: 0.12
+        price: 1
     },
     {
         label: 'DGB',
         searchedBy: 'digicoin dgb',
-        price: 0.12
-    },
-    {
-        label: 'EUR',
-        searchedBy: 'euro eur',
-        price: 1.18
+        price: 0.05
     }
-
 ];
 
 export default searchList;

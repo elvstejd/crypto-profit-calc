@@ -8,7 +8,5 @@
     "target_price_label": "Precio de venta",
     "profitloss_label": "Ganancias/Pérdidas",
     "no_results": "Todavía no conocemos esa. Usar ",
-    "made_by": "Hecho por",
-    "currency_disclaimer": "Todos los precios en dólares estadounidenses.",
-    "feedback": "Sugerencias"
+    "source_code_label": "Código Fuente"
 }
