@@ -4,8 +4,6 @@ import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
 import ProfitDisplay from './ProfitDisplay';
 import { useTranslation } from 'react-i18next';
-import '../styles/App.css';
-// import logo from '../assets/images/logo.png';
 import DataProvider from '../contexts/dataContext';
 import styled from 'styled-components';
 
