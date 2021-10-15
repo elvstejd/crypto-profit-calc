@@ -7,4 +7,8 @@ export const Card = styled.div`
     flex-direction: column;
     border-radius: var(--border-radius-md);
     overflow: hidden;
+
+    @media (min-width: 590px) {
+        border: 1px solid var(--primary-200)
+    }
 `;

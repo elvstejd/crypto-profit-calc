@@ -15,8 +15,13 @@ import { InputContainer } from '../styles/shared/InputContainer';
 const MainFormCard = styled(Card)`
     grid-row: span 2;
     display: flex;
+    gap: 1rem;
     flex-direction: column;
     justify-content: space-between;
+`;
+
+const Spacer = styled.div`
+    margin-bottom: 0.5rem;
 `;
 
 const MainForm = () => {
@@ -46,7 +51,9 @@ const MainForm = () => {
     return (
         <MainFormCard>
             <div>
-                <Label htmlFor="invested">{t('invested_label')}</Label>
+                <Spacer>
+                    <Label htmlFor="invested">{t('invested_label')}</Label>
+                </Spacer>
                 <InputContainer>
                     <input onChange={handleInvestedChange} maxLength="12" />
                     <span><BiDollar /></span>
@@ -54,7 +61,9 @@ const MainForm = () => {
             </div>
 
             <div>
-                <Label htmlFor="coin">{t('coin_label')}</Label>
+                <Spacer>
+                    <Label htmlFor="coin">{t('coin_label')}</Label>
+                </Spacer>
                 <Select
                     options={searchList}
                     setDisplayPrice={setDisplayPrice}
@@ -62,7 +71,9 @@ const MainForm = () => {
             </div>
 
             <div>
-                <Label htmlFor="price">{t('buying_price_label')}</Label>
+                <Spacer>
+                    <Label htmlFor="price">{t('buying_price_label')}</Label>
+                </Spacer>
                 <InputContainer>
                     <input ref={priceInputRef} name="price" maxLength="12" onChange={handlePriceChange} />
                     <span><BiDollar /></span>
@@ -70,7 +81,9 @@ const MainForm = () => {
             </div>
 
             <div>
-                <Label htmlFor="amount">{t('coin_amount_label')}</Label>
+                <Spacer>
+                    <Label htmlFor="amount">{t('coin_amount_label')}</Label>
+                </Spacer>
                 <InputContainer>
                     <input name="amount" value={formatCoinAmount(amount)} readOnly />
                     <BiCoinStack />

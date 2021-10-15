@@ -12,7 +12,12 @@ import { InputContainer } from '../styles/shared/InputContainer';
 
 const TargetPriceFormContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @media (min-width: 590px) {
+        flex-direction: row;
+    }
 `;
 
 const TargetPriceInputContainer = styled(InputContainer)`
@@ -22,6 +27,7 @@ const TargetPriceInputContainer = styled(InputContainer)`
 const ButtonsContainer = styled.div`
     flex-grow: 2;
     display: flex;
+    gap: 0.5rem;
 `;
 
 const Button = styled.button`
@@ -30,12 +36,16 @@ const Button = styled.button`
     color: var(--neutral-100);
     border: none;
     cursor: pointer;
-    margin-left: 0.5rem;
     font-family: 'DM Sans', sans-serif;
     flex-grow: 1;
+    padding: 0.5rem;
 
     &:active {
         transform: translateY(2px);
+    }
+
+    @media (min-width: 590px) {
+        padding: 0;
     }
 `;
 
@@ -43,7 +53,12 @@ const GrowthDisplayContainer = styled.div`
     display: flex;
     justify-content: center;
     margin: auto 0;
-    font-size: 3rem;
+    margin-top: 2rem;
+    font-size: 2rem;
+
+    @media (min-width: 590px) {
+        font-size: 3rem;
+    }
 `;
 
 const Caret = styled.span`
