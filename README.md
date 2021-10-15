@@ -28,6 +28,6 @@ Simple profit/loss calculator for cryptocurrency investments.
     
 ## Tech Stack
 
-**Client:** React, Context API, i18next 
+**Client:** React, Context API, Styled Components, i18next
 
 **Server:** Node, Express
