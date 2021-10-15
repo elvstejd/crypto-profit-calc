@@ -17,21 +17,22 @@ const Dropdown = styled.div`
     margin-top: 0.2rem;
     position: absolute;
     z-index: 99;
-    background-color: var(--primary-500);
-    box-shadow: 1px 4px 7px -3px rgba(0,0,0,0.57);
-    padding: 0.9rem 0.6rem; 
-    border-radius: 6px;
+    background-color: var(--primary-300);
+    box-shadow: var(--shadow-raised);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--primary-200);
     overflow-y: scroll;
     max-height: 20rem;
     display: ${props => props.show ? 'block' : 'none'};
 `;
 
 const Option = styled.div`
-    padding: 0.5rem 0.5rem;
-    margin-bottom: 0.2rem;
+    border-top: 0.5px solid var(--primary-200);
+    padding: 1rem 0.9rem;
+    cursor: pointer;
 
     &:hover {
-        background-color: var(--primary-300);
+        background-color: var(--primary-500);
     }
 `;
 
