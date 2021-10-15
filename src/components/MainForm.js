@@ -20,6 +20,10 @@ const MainFormCard = styled(Card)`
     justify-content: space-between;
 `;
 
+const DisabledInputContainer = styled(InputContainer)`
+    background-color: var(--primary-400);
+`;
+
 const Spacer = styled.div`
     margin-bottom: 0.5rem;
 `;
@@ -84,10 +88,10 @@ const MainForm = () => {
                 <Spacer>
                     <Label htmlFor="amount">{t('coin_amount_label')}</Label>
                 </Spacer>
-                <InputContainer>
-                    <input name="amount" value={formatCoinAmount(amount)} readOnly />
+                <DisabledInputContainer>
+                    <input name="amount" value={formatCoinAmount(amount)} readOnly disabled />
                     <BiCoinStack />
-                </InputContainer>
+                </DisabledInputContainer>
             </div>
         </MainFormCard>
     );
