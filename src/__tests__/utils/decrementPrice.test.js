@@ -54,17 +54,17 @@ test('should decrement 01 cent when it has one leading zero (0)', () => {
 
 test('should decrement 1 led by three 0s when number has two leading 0s', () => {
     const result = decrementPrice('0.00457');
-    expect(result).toBe('0.00467');
+    expect(result).toBe('0.00447');
 });
 
 test('should decrement 1 led by four 0s when number has three leading 0s', () => {
     const result = decrementPrice('0.0003247');
-    expect(result).toBe('0.0003347');
+    expect(result).toBe('0.0003147');
 });
 
 test('should decrement 1 led by five 0s when number has four leading 0s', () => {
     const result = decrementPrice('0.000027');
-    expect(result).toBe('0.000028');
+    expect(result).toBe('0.000026');
 });
 
 test('should never return a negative value', () => {

@@ -32,7 +32,7 @@ export function decrementPrice(inputPrice) {
         if (leadingZeroesCount === 0) return price.minus(0.10).toString();
         if (leadingZeroesCount === 1) return price.minus(0.01).toString();
         const decimalIncrement = `0.${"0".repeat(leadingZeroesCount + 1)}1`;
-        return price.add(decimalIncrement).toString();
+        return price.minus(decimalIncrement).toString();
     }
 
     const finalResult = price.minus(1);
