@@ -4,6 +4,8 @@ import { BiDollar, BiCaretDown, BiCaretUp } from 'react-icons/bi';
 import { useData } from '../contexts/dataContext';
 import { formatGrowthPercent } from '../utils/formatGrowthPercent';
 import { numberIsValid } from '../utils/numberIsValid';
+import { incrementPrice } from '../utils/incrementPrice';
+import { decrementPrice } from '../utils/decrementPrice';
 import styled from 'styled-components';
 import { Card } from '../styles/shared/Card';
 import { Label } from '../styles/shared/Label';
@@ -97,14 +99,14 @@ const GrowthForm = () => {
         if (numberIsValid(targetPrice)) setTargetPrice(targetPrice);
     }
 
-    function handleAddPrice() {
-        const newValue = targetPrice + 1;
-        setTargetPrice(newValue);
+    function handlePlusClick() {
+        const result = incrementPrice(targetPrice);
+        setTargetPrice(result);
     }
 
-    function handleMinusPrice() {
-        const newValue = targetPrice - 1;
-        setTargetPrice(newValue);
+    function handleMinusClick() {
+        const result = decrementPrice(targetPrice);
+        setTargetPrice(result);
     }
 
     return (
@@ -116,8 +118,8 @@ const GrowthForm = () => {
                     <span><BiDollar /></span>
                 </TargetPriceInputContainer>
                 <ButtonsContainer>
-                    <Button onClick={handleAddPrice}>+</Button>
-                    <Button onClick={handleMinusPrice}>-</Button>
+                    <Button onClick={handlePlusClick}>+</Button>
+                    <Button onClick={handleMinusClick}>-</Button>
                 </ButtonsContainer>
             </TargetPriceFormContainer>
             <GrowthDisplayContainer>
