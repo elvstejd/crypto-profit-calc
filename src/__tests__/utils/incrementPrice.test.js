@@ -36,7 +36,7 @@ test('should increment 100 to integers in the thousands', () => {
 });
 
 test('should increment 100 and round down numbers in the thousands with decimals', () => {
-    const result = incrementPrice('15214');
+    const result = incrementPrice('15214.45');
     expect(result).toBe('15314');
 });
 
@@ -47,9 +47,9 @@ test('should add 10 cents when no leading zeroes (0)', () => {
     expect(result).toBe('0.52');
 });
 
-test('should add 10 cents when it has one leading zero (0)', () => {
-    const result = incrementPrice('0.42');
-    expect(result).toBe('0.52');
+test('should add 1 cent when it has one leading zero (0)', () => {
+    const result = incrementPrice('0.042');
+    expect(result).toBe('0.052');
 });
 
 test('should add 1 led by three 0s when number has two leading 0s', () => {

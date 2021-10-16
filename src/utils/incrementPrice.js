@@ -29,7 +29,8 @@ export function incrementPrice(inputPrice) {
 
         leadingZeroesCount -= 1;
 
-        if (leadingZeroesCount <= 1) return price.add(0.10).toString();
+        if (leadingZeroesCount === 0) return price.add(0.10).toString();
+        if (leadingZeroesCount === 1) return price.add(0.01).toString();
         const decimalIncrement = `0.${"0".repeat(leadingZeroesCount + 1)}1`;
         return price.add(decimalIncrement).toString();
     }
