@@ -70,6 +70,11 @@ const GridContainer = styled.div`
     display: grid;
     grid-template-rows: 90% 10%;
     min-height: 100vh;
+
+    & > div:nth-child(2) {
+        display: flex;
+        align-items: flex-end;
+    }
 `;
 
 
@@ -89,11 +94,12 @@ const App = () => {
                         <GrowthForm />
                     </StyledMain>
                 </div>
-
-                <StyledFooter>
-                    <SourceLink target="_blank" href="https://github.com/elvstejd/crypto-profit-calc">{t("source_code_label")}</SourceLink>
-                    <LanguageSelector />
-                </StyledFooter>
+                <div>
+                    <StyledFooter>
+                        <SourceLink target="_blank" href="https://github.com/elvstejd/crypto-profit-calc">{t("source_code_label")}</SourceLink>
+                        <LanguageSelector />
+                    </StyledFooter>
+                </div>
             </GridContainer>
         </DataProvider>
     );
