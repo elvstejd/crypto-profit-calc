@@ -55,15 +55,21 @@ const StyledFooter = styled.footer`
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
 
     @media (min-width: 590px) {
-        margin-top: 4rem;
+        margin-top: 0;
     }
 `;
 
 const SourceLink = styled.a`
     color: var(--neutral-200);
+`;
+
+const GridContainer = styled.div`
+    display: grid;
+    grid-template-rows: 90% 10%;
+    min-height: 100vh;
 `;
 
 
@@ -72,20 +78,23 @@ const App = () => {
 
     return (
         <DataProvider>
-            <div>
-                <TaglineWrapper>
-                    <p>{t('tagline')}</p>
-                </TaglineWrapper>
-                <StyledMain>
-                    <MainForm />
-                    <ProfitDisplay />
-                    <GrowthForm />
-                </StyledMain>
+            <GridContainer>
+                <div>
+                    <TaglineWrapper>
+                        <p>{t('tagline')}</p>
+                    </TaglineWrapper>
+                    <StyledMain>
+                        <MainForm />
+                        <ProfitDisplay />
+                        <GrowthForm />
+                    </StyledMain>
+                </div>
+
                 <StyledFooter>
                     <SourceLink target="_blank" href="https://github.com/elvstejd/crypto-profit-calc">{t("source_code_label")}</SourceLink>
                     <LanguageSelector />
                 </StyledFooter>
-            </div>
+            </GridContainer>
         </DataProvider>
     );
 }
