@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { BiSearch, BiX } from 'react-icons/bi';
 import { useTranslation } from 'react-i18next';
-import data from '../testdata/coinList';
+import dummyData from '../testdata/coinList';
+import getCoins from '../services/getCoins';
 import { InputContainer } from '../styles/shared/InputContainer';
 import styled from 'styled-components';
+import { formatCoinPrice } from '../utils/formatCoinPrice';
 
 
 const Dropdown = styled.div`
@@ -23,9 +25,16 @@ const Option = styled.div`
     border-top: 0.5px solid var(--primary-200);
     padding: 1rem 0.9rem;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
 
     &:hover {
         background-color: var(--primary-500);
+    }
+
+    span:nth-child(2) {
+        font-size: 0.8rem;
+        color: var(--primary-100);
     }
 `;
 
@@ -77,15 +86,19 @@ const Select = ({ setDisplayPrice }) => {
     const { t } = useTranslation();
 
     useEffect(() => {
-        // fetch('http://localhost:3001/coins').then(res => res.json()).then(data => {
-        setCoins(data)
-        // })
+        getCoins().then(res => {
+            const liveCoins = res.data;
+            setCoins(liveCoins);
+        }).catch(err => {
+            console.log(err);
+            setCoins(dummyData);
+        });
     }, []);
 
     useEffect(() => {
         if (selectedCoin) {
             coins.forEach(coin => {
-                if (coin.label === selectedCoin) {
+                if (coin.symbol === selectedCoin) {
                     setDisplayPrice(coin.price);
                 }
             });
@@ -96,7 +109,7 @@ const Select = ({ setDisplayPrice }) => {
     useEffect(() => {
         if (selectedCoin) {
             coins.forEach(coin => {
-                if (coin.label === selectedCoin) {
+                if (coin.symbol === selectedCoin) {
                     setDisplayPrice(coin.price);
                 }
             });
@@ -115,9 +128,9 @@ const Select = ({ setDisplayPrice }) => {
     };
 
     const handleCoinSelect = (e) => {
-        setSearch(e.target.dataset.label)
+        setSearch(e.target.dataset.symbol)
         setShowDropdown(false);
-        setSelectedCoin(e.target.dataset.label);
+        setSelectedCoin(e.target.dataset.symbol);
     };
 
     const handleNotFoundCoinSelect = () => {
@@ -162,15 +175,16 @@ const Select = ({ setDisplayPrice }) => {
                 <span><BiSearch /></span>
             </InputContainer>
             <Dropdown show={showDropdown} style={getInputWidth()}>
-                {filteredCoins(search, coins).map(option => {
+                {filteredCoins(search, coins).map(coin => {
                     return (
                         <Option
                             className="option"
-                            data-label={option.label}
+                            data-symbol={coin.symbol}
                             onClick={handleCoinSelect}
-                            key={option.label}
+                            key={coin.symbol}
                         >
-                            {option.label}
+                            <span>{coin.symbol}</span>
+                            <span>{formatCoinPrice(coin.price.toString())}</span>
                         </Option>
                     );
                 })}

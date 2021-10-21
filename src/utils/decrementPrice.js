@@ -15,7 +15,7 @@ export function decrementPrice(inputPrice) {
         // count leading 0s
         let leadingZeroesCount = 0;
 
-        const priceChars = price.toString().split('');
+        const priceChars = price.toFixed().toString().split('');
 
         for (const char of priceChars) {
             if (char === '0') {
@@ -29,10 +29,10 @@ export function decrementPrice(inputPrice) {
 
         leadingZeroesCount -= 1;
 
-        if (leadingZeroesCount === 0) return price.minus(0.10).toString();
-        if (leadingZeroesCount === 1) return price.minus(0.01).toString();
+        if (leadingZeroesCount === 0) return price.minus(0.10).toFixed().toString();
+        if (leadingZeroesCount === 1) return price.minus(0.01).toFixed().toString();
         const decimalIncrement = `0.${"0".repeat(leadingZeroesCount + 1)}1`;
-        return price.minus(decimalIncrement).toString();
+        return price.minus(decimalIncrement).toFixed().toString();
     }
 
     const finalResult = price.minus(1);
