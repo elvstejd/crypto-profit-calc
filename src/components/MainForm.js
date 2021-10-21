@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
-import searchList from '../testdata/coinList';
 import { useData } from '../contexts/dataContext';
 import { numberIsValid } from '../utils/numberIsValid';
 import { formatCoinAmount } from '../utils/formatCoinAmount';
@@ -69,7 +68,6 @@ const MainForm = () => {
                     <Label htmlFor="coin">{t('coin_label')}</Label>
                 </Spacer>
                 <Select
-                    options={searchList}
                     setDisplayPrice={setDisplayPrice}
                 />
             </div>
