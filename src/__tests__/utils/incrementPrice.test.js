@@ -66,3 +66,8 @@ test('should add 1 led by five 0s when number has four leading 0s', () => {
     const result = incrementPrice('0.000027');
     expect(result).toBe('0.000028');
 });
+
+test('should increment the elon coin accordingly', () => {
+    const result = incrementPrice('0.0000004977');
+    expect(result).toBe('0.0000005077');
+});

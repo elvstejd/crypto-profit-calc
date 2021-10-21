@@ -71,3 +71,9 @@ test('should never return a negative value', () => {
     const result = decrementPrice('0');
     expect(result).toBe('0');
 });
+
+test('should decrement the elon coin accordingly', () => {
+    const result = decrementPrice('0.0000004977');
+    expect(result).toBe('0.0000004877');
+});
+
