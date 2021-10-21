@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainForm from './MainForm';
 import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
@@ -6,6 +6,7 @@ import ProfitDisplay from './ProfitDisplay';
 import { useTranslation } from 'react-i18next';
 import DataProvider from '../contexts/dataContext';
 import styled from 'styled-components';
+import ReactGA from '../googleAnalyticsSetup';
 
 
 const StyledMain = styled.main`
@@ -72,6 +73,10 @@ const GridContainer = styled.div`
 const App = () => {
     const { t } = useTranslation();
 
+    useEffect(() => {
+        ReactGA.pageview('/');
+    }, []);
+
     return (
         <DataProvider>
             <GridContainer>
@@ -87,7 +92,13 @@ const App = () => {
                 </div>
                 <div>
                     <StyledFooter>
-                        <SourceLink target="_blank" href="https://github.com/elvstejd/crypto-profit-calc">{t("source_code_label")}</SourceLink>
+                        <SourceLink
+                            target="_blank"
+                            href="https://github.com/elvstejd/crypto-profit-calc"
+                            onClick={() => { ReactGA.event({ category: 'button', action: 'click-source-code' }) }}
+                        >
+                            {t("source_code_label")}
+                        </SourceLink>
                         <LanguageSelector />
                     </StyledFooter>
                 </div>
