@@ -7,15 +7,6 @@ import { useTranslation } from 'react-i18next';
 import DataProvider from '../contexts/dataContext';
 import styled from 'styled-components';
 
-// const StyledMain = styled.main`
-//     max-width: 60rem;
-//     min-height: 30rem;
-//     margin: 0 auto;
-//     display: grid;
-//     grid-template-columns: 20rem 40rem;
-//     grid-template-rows: 50% 50%;
-//     grid-gap: 1rem;
-// `;
 
 const StyledMain = styled.main`
     max-width: 36.8rem;
