@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Select from './Select';
 import { BiDollar, BiCoinStack } from 'react-icons/bi';
@@ -28,10 +28,16 @@ const Spacer = styled.div`
 `;
 
 const MainForm = () => {
-    const { amount, setInvested, setBuyingPrice, setTargetPrice } = useData();
+    const { amount, invested, buyingPrice, setInvested, setBuyingPrice, setTargetPrice } = useData();
     const { t } = useTranslation();
 
     const priceInputRef = useRef();
+    const investedInputRef = useRef();
+
+    useEffect(() => {
+        investedInputRef.current.value = invested;
+        priceInputRef.current.value = buyingPrice;
+    }, [invested, buyingPrice])
 
     const setDisplayPrice = (price) => {
         priceInputRef.current.value = price;
@@ -58,7 +64,7 @@ const MainForm = () => {
                     <Label htmlFor="invested">{t('invested_label')}</Label>
                 </Spacer>
                 <InputContainer>
-                    <input onChange={handleInvestedChange} maxLength="12" />
+                    <input onChange={handleInvestedChange} maxLength="12" ref={investedInputRef} />
                     <span><BiDollar /></span>
                 </InputContainer>
             </div>
