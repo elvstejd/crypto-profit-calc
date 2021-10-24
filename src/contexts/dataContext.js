@@ -32,6 +32,13 @@ function DataProvider({ children }) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [profit]);
 
+    function setValuesFromShare(invested, buyingPrice, sellingPrice) {
+        console.log(invested, buyingPrice, sellingPrice);
+        setInvested(invested);
+        setBuyingPrice(buyingPrice);
+        setTargetPrice(sellingPrice);
+    }
+
     const value = {
         setInvested,
         setBuyingPrice,
@@ -39,7 +46,10 @@ function DataProvider({ children }) {
         targetPrice,
         percentage: new Decimal(buyingPrice).equals(targetPrice) ? "0" : percentage,
         profit: new Decimal(buyingPrice).equals(targetPrice) ? "0" : profit,
-        amount
+        amount,
+        invested,
+        buyingPrice,
+        setValuesFromShare
     };
 
     return (
