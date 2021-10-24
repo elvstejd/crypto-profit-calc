@@ -6,6 +6,7 @@ import getCoins from '../services/getCoins';
 import { InputContainer } from '../styles/shared/InputContainer';
 import styled from 'styled-components';
 import { formatCoinPrice } from '../utils/formatCoinPrice';
+import useShareParams from '../hooks/useShareParams';
 
 
 const Dropdown = styled.div`
@@ -76,14 +77,23 @@ const CloseButton = styled.span`
 
 
 const Select = ({ setDisplayPrice }) => {
+    const { t } = useTranslation();
     const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState("");
     const [selectedCoin, setSelectedCoin] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
+    const coinSymbolParam = useShareParams();
     const inputContainerRef = useRef();
     const inputRef = useRef();
 
-    const { t } = useTranslation();
+    useEffect(() => {
+        if (coinSymbolParam) {
+            setSearch(coinSymbolParam)
+            setShowDropdown(false);
+            setSelectedCoin(coinSymbolParam);
+        }
+    }, [coinSymbolParam]);
+
 
     useEffect(() => {
         getCoins().then(res => {
