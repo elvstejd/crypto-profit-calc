@@ -34,7 +34,6 @@ function DataProvider({ children }) {
     }, [profit]);
 
     function setValuesFromShare(invested, buyingPrice, sellingPrice) {
-        console.log(invested, buyingPrice, sellingPrice);
         setInvested(invested);
         setBuyingPrice(buyingPrice);
         setTargetPrice(sellingPrice);
