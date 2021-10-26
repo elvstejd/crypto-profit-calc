@@ -30,6 +30,12 @@ function useShareParams() {
             setValuesFromShare(invested, buyingPrice, sellingPrice);
             setCoinSymbol(coinSymbol);
         }
+        clearParams();
+    }
+
+    function clearParams() {
+        const baseURL = `${window.location.protocol}//${window.location.host}/`;
+        window.history.pushState({ path: baseURL }, '', baseURL);
     }
 
     return coinSymbol;
