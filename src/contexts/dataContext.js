@@ -18,6 +18,7 @@ function DataProvider({ children }) {
     const [invested, setInvested] = useState(0);
     const [profit, setProfit] = useState("0");
     const [percentage, setPercentage] = useState(0);
+    const [selectedCoinSymbol, setSelectedCoinSymbol] = useState('');
 
     useEffect(() => {
         const amountResult = calculateAmount(invested, buyingPrice);
@@ -43,6 +44,8 @@ function DataProvider({ children }) {
         setInvested,
         setBuyingPrice,
         setTargetPrice,
+        setSelectedCoinSymbol,
+        selectedCoinSymbol,
         targetPrice,
         percentage: new Decimal(buyingPrice).equals(targetPrice) ? "0" : percentage,
         profit: new Decimal(buyingPrice).equals(targetPrice) ? "0" : profit,
