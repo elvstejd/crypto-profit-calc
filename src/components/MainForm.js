@@ -35,8 +35,8 @@ const MainForm = () => {
     const investedInputRef = useRef();
 
     useEffect(() => {
-        investedInputRef.current.value = invested;
-        priceInputRef.current.value = buyingPrice;
+        if (invested) investedInputRef.current.value = invested;
+        if (buyingPrice) priceInputRef.current.value = buyingPrice;
     }, [invested, buyingPrice])
 
     const setDisplayPrice = (price) => {
