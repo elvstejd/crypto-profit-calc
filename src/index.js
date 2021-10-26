@@ -13,4 +13,5 @@ const jsx = (
         <App />
     </DataProvider>
 );
+
 ReactDOM.render(jsx, root);
