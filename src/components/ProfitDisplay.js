@@ -7,6 +7,7 @@ import { Label } from '../styles/shared/Label';
 import { formatProfitToUSD } from '../utils/formatProfitToUSD';
 import useShareLink from '../hooks/useShareLink';
 import toast, { Toaster } from 'react-hot-toast';
+import ReactGA from '../googleAnalyticsSetup';
 
 const ProfitNumberContainer = styled.div`
     display: flex;
@@ -75,6 +76,7 @@ const ProfitDisplay = () => {
             /* clipboard write failed */
             console.error('Failed to copy share url to clipboard. ');
         });
+        ReactGA.event({ category: 'button', action: 'click-share-button' })
     }
 
     return (
