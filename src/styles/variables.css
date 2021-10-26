@@ -15,6 +15,7 @@
   --primary-300: #1c1b43ff;
   --primary-200: #2a2955ff;
   --primary-100: #9c9bcfff;
+  --primary-50: rgb(184, 183, 243);
 
   /*Accent*/
   --accent-700: rgb(70, 15, 112);

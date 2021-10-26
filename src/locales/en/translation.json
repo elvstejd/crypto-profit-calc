@@ -8,5 +8,6 @@
     "target_price_label": "Selling price",
     "profitloss_label": "Profit/Loss",
     "no_results": "Use ",
-    "source_code_label": "Source Code"
+    "source_code_label": "Source Code",
+    "copied_notice": "Copied to clipboard!"
 }

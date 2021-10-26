@@ -4,7 +4,6 @@ import GrowthForm from './GrowthForm';
 import LanguageSelector from './LanguageSelector';
 import ProfitDisplay from './ProfitDisplay';
 import { useTranslation } from 'react-i18next';
-import DataProvider from '../contexts/dataContext';
 import styled from 'styled-components';
 import ReactGA from '../googleAnalyticsSetup';
 
@@ -78,32 +77,30 @@ const App = () => {
     }, []);
 
     return (
-        <DataProvider>
-            <GridContainer>
-                <div>
-                    <TaglineWrapper>
-                        <p>{t('tagline')}</p>
-                    </TaglineWrapper>
-                    <StyledMain>
-                        <MainForm />
-                        <ProfitDisplay />
-                        <GrowthForm />
-                    </StyledMain>
-                </div>
-                <div>
-                    <StyledFooter>
-                        <SourceLink
-                            target="_blank"
-                            href="https://github.com/elvstejd/crypto-profit-calc"
-                            onClick={() => { ReactGA.event({ category: 'button', action: 'click-source-code' }) }}
-                        >
-                            {t("source_code_label")}
-                        </SourceLink>
-                        <LanguageSelector />
-                    </StyledFooter>
-                </div>
-            </GridContainer>
-        </DataProvider>
+        <GridContainer>
+            <div>
+                <TaglineWrapper>
+                    <p>{t('tagline')}</p>
+                </TaglineWrapper>
+                <StyledMain>
+                    <MainForm />
+                    <ProfitDisplay />
+                    <GrowthForm />
+                </StyledMain>
+            </div>
+            <div>
+                <StyledFooter>
+                    <SourceLink
+                        target="_blank"
+                        href="https://github.com/elvstejd/crypto-profit-calc"
+                        onClick={() => { ReactGA.event({ category: 'button', action: 'click-source-code' }) }}
+                    >
+                        {t("source_code_label")}
+                    </SourceLink>
+                    <LanguageSelector />
+                </StyledFooter>
+            </div>
+        </GridContainer>
     );
 }
 

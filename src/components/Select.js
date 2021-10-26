@@ -6,6 +6,8 @@ import getCoins from '../services/getCoins';
 import { InputContainer } from '../styles/shared/InputContainer';
 import styled from 'styled-components';
 import { formatCoinPrice } from '../utils/formatCoinPrice';
+import useShareParams from '../hooks/useShareParams';
+import { useData } from '../contexts/dataContext';
 
 
 const Dropdown = styled.div`
@@ -76,14 +78,24 @@ const CloseButton = styled.span`
 
 
 const Select = ({ setDisplayPrice }) => {
+    const { t } = useTranslation();
     const [coins, setCoins] = useState([]);
     const [search, setSearch] = useState("");
-    const [selectedCoin, setSelectedCoin] = useState(null);
+    const { selectedCoinSymbol, setSelectedCoinSymbol } = useData();
     const [showDropdown, setShowDropdown] = useState(false);
+    const coinSymbolParam = useShareParams();
     const inputContainerRef = useRef();
     const inputRef = useRef();
 
-    const { t } = useTranslation();
+    useEffect(() => {
+        if (coinSymbolParam) {
+            setSearch(coinSymbolParam)
+            setShowDropdown(false);
+            setSelectedCoinSymbol(coinSymbolParam);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [coinSymbolParam]);
+
 
     useEffect(() => {
         getCoins().then(res => {
@@ -96,26 +108,26 @@ const Select = ({ setDisplayPrice }) => {
     }, []);
 
     useEffect(() => {
-        if (selectedCoin) {
+        if (selectedCoinSymbol) {
             coins.forEach(coin => {
-                if (coin.symbol === selectedCoin) {
+                if (coin.symbol === selectedCoinSymbol) {
                     setDisplayPrice(coin.price);
                 }
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCoin]);
+    }, [selectedCoinSymbol]);
 
     useEffect(() => {
-        if (selectedCoin) {
+        if (selectedCoinSymbol) {
             coins.forEach(coin => {
-                if (coin.symbol === selectedCoin) {
+                if (coin.symbol === selectedCoinSymbol) {
                     setDisplayPrice(coin.price);
                 }
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [selectedCoin]);
+    }, [selectedCoinSymbol]);
 
     const handleSearchInputChange = (e) => {
         if (e.target.value) {
@@ -130,17 +142,17 @@ const Select = ({ setDisplayPrice }) => {
     const handleCoinSelect = (e) => {
         setSearch(e.target.dataset.symbol)
         setShowDropdown(false);
-        setSelectedCoin(e.target.dataset.symbol);
+        setSelectedCoinSymbol(e.target.dataset.symbol);
     };
 
     const handleNotFoundCoinSelect = () => {
         setShowDropdown(false);
-        setSelectedCoin(search);
+        setSelectedCoinSymbol(search);
     };
 
     const handleClearSelected = () => {
         setSearch("");
-        setSelectedCoin(null);
+        setSelectedCoinSymbol(null);
 
         setTimeout(() => {
             if (inputRef.current) inputRef.current.focus();
@@ -164,7 +176,7 @@ const Select = ({ setDisplayPrice }) => {
     return (
         <div>
             <InputContainer ref={inputContainerRef}>
-                {selectedCoin ? (
+                {selectedCoinSymbol ? (
                     <PillContainer>
                         <span>{search}</span>
                         <CloseButton onClick={handleClearSelected}><BiX /></CloseButton>
